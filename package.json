@@ -1,0 +1,26 @@
+{
+  "name": "live-vdom",
+  "version": "0.0.1",
+  "description": "A minimal v-dom implementation for live evaluation",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src test",
+    "start": "webpack-dev-server -r esm --mode=development --inline --colors --progress --content-base src",
+    "test": "mocha -r esm test/*.test.js"
+  },
+  "author": "Luke Anderson",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/parser": "^7.4.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.0",
+    "esm": "^3.2.25",
+    "jsdom": "^15.1.1",
+    "mocha": "^6.1.4",
+    "raw-loader": "^2.0.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
+}

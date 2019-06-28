@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS-Markup Example</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #242424;
+        color: #CCC;
+        font-family: helvetica, arial, sans-serif;
+        font-size: 12px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+
+    <ps-toggle-button></ps-toggle-button>
+
+    <div>
+      <!-- <ps-dac>
+        <ps-gain value="0.1">
+          <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
+        </ps-gain>
+        <ps-gain value="0.2">
+          <ps-gain value="0.3">
+            <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
+          </ps-gain>
+        </ps-gain>
+      </ps-dac> -->
+
+      <!-- <ps-gain value="100" id="testmod">
+        <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></ps-env-osc>
+      </ps-gain> -->
+
+      <ps-dac>
+        <ps-gain value="0.15">
+          <ps-osc wav="sin" frequency="440"></ps-osc>
+        </ps-gain>
+      </ps-dac>
+    </div>
+
+  </body>
+  <script src="./scripts/main.bundle.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+</html>
