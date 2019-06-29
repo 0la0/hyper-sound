@@ -78,13 +78,11 @@ export default class DiscreteParameter {
   }
 
   setValue(val) {
-    console.log('setting discrete value', val)
     this._teardownPreviousConnections();
     if (val === null) {
       return this._setDefaultValue();
     }
     if (this.isAddressable && val.indexOf('addr') === 0) {
-      console.log('set message', val);
       return this._setMessage(val);
     }
     this._setConstantValue(val);

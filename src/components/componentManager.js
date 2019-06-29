@@ -1,15 +1,19 @@
 import dataStore from 'services/Store';
+import defineUtilComponents from './util';
 import PsDac from './ps-dac';
 import PsEnvOsc from './ps-env-osc';
 import PsGain from './ps-gain';
 import PsOsc from './ps-osc';
-import defineUtilComponents from './util';
+import PsPatMidi from './ps-pat-midi';
+import PsSeq from './ps-seq';
 
 export const components = {
   PsDac,
   PsEnvOsc,
   PsGain,
   PsOsc,
+  PsPatMidi,
+  PsSeq,
 };
 
 export function defineComponents() {

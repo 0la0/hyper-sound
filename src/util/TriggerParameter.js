@@ -24,14 +24,12 @@ export default class TriggerParameter {
   }
 
   setValue(val) {
-    console.log('setting trigger value', val)
     this._teardownPreviousConnections();
     if (!val) {
       return;
     } 
     const match = val.match(PARENTHESES);
     const address = match ? match[1] : val;
-    console.log('new Address', address);
     this.audioEventSubscription = new Subscription()
       .setAddress(address)
       .setOnNext(this.eventHandler);

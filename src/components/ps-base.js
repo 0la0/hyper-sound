@@ -2,22 +2,26 @@ import { eventBus } from 'services/EventBus';
 import Subscription from 'services/EventBus/Subscription';
 // import { componentState, } from './componentManager';
 
-let allDefiend = false;
+let allDefined = false;
 
 export default class PsBase extends HTMLElement {
   constructor() {
     super();
-    if (!allDefiend) {
+    console.log('allDefined?', allDefined);
+    if (!allDefined) {
       const innerHTML = this.innerHTML;
+      console.log('innerHtML', this, this.innerHTML)
       const dataStoreSubscription = new Subscription('DATA_STORE', (obj) => {
         if (obj.dataStore.componentsDefined) {
-          allDefiend = true;
+          allDefined = true;
           eventBus.unsubscribe(dataStoreSubscription);
           this.innerHTML = innerHTML;
+          console.log('reset InnerHTML');
         }
       });
       eventBus.subscribe(dataStoreSubscription);
       this.innerHTML = '';
+      console.log('clearInnerHTML');
     }
   }
 

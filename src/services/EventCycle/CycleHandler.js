@@ -27,6 +27,7 @@ class Counter {
 
 export default class CycleHandler {
   constructor(patternHandlers) {
+    // console.log('patternHa')
     this.patternHandlers = patternHandlers;
     this.cycleIndex = 0;
     this.counter = new Counter(0);

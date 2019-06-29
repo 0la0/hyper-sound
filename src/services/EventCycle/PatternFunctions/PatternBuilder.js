@@ -3,7 +3,7 @@ import getRelativeCycle from 'services/EventCycle/Pattern/RelativeCycleBuilder';
 import Pattern from 'services/EventCycle/Pattern/Pattern';
 import PatternTransformer from './PatternTransformer';
 
-class PatternBuilder extends PatternTransformer{
+export default class PatternBuilder extends PatternTransformer{
   constructor({ patternString = '', baseAddress = '' }) {
     super();
     if (typeof patternString !== 'string') {
@@ -44,14 +44,14 @@ class PatternBuilder extends PatternTransformer{
   }
 }
 
-export default function pattern(...args) {
-  let patternBuilderArgs = {};
-  if (args.length < 2) {
-    patternBuilderArgs.patternString = args[0];
-    return new PatternBuilder({ patternString: args[0] });
-  }
-  return new PatternBuilder({
-    baseAddress: args[0],
-    patternString: args[1]
-  });
-}
+// export default function pattern(...args) {
+//   let patternBuilderArgs = {};
+//   if (args.length < 2) {
+//     patternBuilderArgs.patternString = args[0];
+//     return new PatternBuilder({ patternString: args[0] });
+//   }
+//   return new PatternBuilder({
+//     baseAddress: args[0],
+//     patternString: args[1]
+//   });
+// }

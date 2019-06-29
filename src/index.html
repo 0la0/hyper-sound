@@ -23,26 +23,29 @@
     <ps-toggle-button></ps-toggle-button>
 
     <div>
-      <!-- <ps-dac>
+
+      <ps-dac>
         <ps-gain value="0.1">
           <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
         </ps-gain>
-        <ps-gain value="0.2">
-          <ps-gain value="0.3">
-            <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
-          </ps-gain>
-        </ps-gain>
-      </ps-dac> -->
+        <!-- <ps-gain value="0.2">
+          <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
+        </ps-gain> -->
+      </ps-dac>
 
       <!-- <ps-gain value="100" id="testmod">
         <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></ps-env-osc>
       </ps-gain> -->
 
-      <ps-dac>
+      <ps-seq>
+        <ps-pat-midi pattern="a:54 a:60 a:72"></ps-pat-midi>
+      </ps-seq>
+
+      <!-- <ps-dac>
         <ps-gain value="0.15">
           <ps-osc wav="sin" frequency="440"></ps-osc>
         </ps-gain>
-      </ps-dac>
+      </ps-dac> -->
     </div>
 
   </body>
