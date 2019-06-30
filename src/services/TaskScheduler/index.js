@@ -1,7 +1,13 @@
-export function enqueueTask() {
-  setTimeout(...arguments);
-}
+let fns = [];
+let nextPaint;
 
-export function enqueueMicroTask(microTask) {
-  Promise.resolve().then(microTask);
+export function batchRender(fn) {
+  fns.push(fn);
+  if (nextPaint) {
+    return;
+  }
+  nextPaint = requestAnimationFrame(() => {
+    fns.forEach(fn => fn());
+    nextPaint = undefined;
+  });
 }

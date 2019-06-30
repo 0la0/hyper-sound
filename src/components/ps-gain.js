@@ -3,6 +3,7 @@ import Gain from 'services/audio/gain';
 import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
 import UgenConnection from 'services/UgenConnection/UgenConnection';
 import { InputType, } from 'services/AudioParameter/SignalParameter';
+import { batchRender, } from 'services/TaskScheduler';
 import ContinuousParam from '../util/ContinuousParam';
 
 export default class PsGain extends PsBase {
@@ -14,14 +15,8 @@ export default class PsGain extends PsBase {
     return [ 'value' ];
   }
 
-  constructor() {
-    super();
-    this.isMounted = false;
-    console.log('PsGain constructor')
-  }
-
   connectedCallback() {
-    console.log('ps-gain connected', this.getAttribute('value'));
+    super.connectedCallback();
     const gain = new Gain();
     
     this.isMounted = true;
@@ -30,9 +25,6 @@ export default class PsGain extends PsBase {
     //   value: new SignalParameter(gain.getGainParam(), defaultValue, new InputType().numeric().message().signal().build()),
     // };
 
-    if (this.parentNode.audioModel) {
-      this.audioModel.connectTo(this.parentNode.audioModel);
-    }
     this.paramTest = new ContinuousParam({
       attrName: 'value',
       param: gain.getGainParam(),
@@ -40,10 +32,14 @@ export default class PsGain extends PsBase {
       defaultValue: 0.2,
       element: this,
     });
+    batchRender(() => {
+      if (this.parentNode.audioModel) {
+        this.audioModel.connectTo(this.parentNode.audioModel);
+      }
+    });
   }
 
   disconnectedCallback() {
-    console.log('ps-gain disconnected');
     this.paramTest.disconnect();
     this.audioModel.disconnect();
   }

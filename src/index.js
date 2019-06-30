@@ -1,7 +1,6 @@
 import { components, defineComponents } from './components/componentManager';
 
 function init() {
-  console.log('define components')
   defineComponents();
 }
 

@@ -1,19 +1,15 @@
 import PsBase from './ps-base';
 import { uuid } from 'services/Math';
 import PatternBuilder from 'services/EventCycle/PatternFunctions/PatternBuilder.js';
+import { batchRender } from '../services/TaskScheduler';
 
 export default class PsPatMidi extends PsBase {
   static get tag() {
     return 'ps-pat-midi';
   }
 
-  constructor() {
-    super();
-    this.isMounted = false;
-    console.log('ps-pat-midi')
-  }
-
   connectedCallback() {
+    super.connectedCallback();
     this.isMounted = true;
     console.log('ps-pat-midi connected', this.getAttribute('pattern'))
 
@@ -23,9 +19,12 @@ export default class PsPatMidi extends PsBase {
 
     this.componentId = uuid();
     const pattenModel = { pattern, id: this.componentId, };
-    if (this.parentNode.patternModel) {
-      this.onRemoveCallback = this.parentNode.patternModel.appendPattern(pattenModel);
-    }
+
+    batchRender(() => {
+      if (this.parentNode.patternModel) {
+        this.onRemoveCallback = this.parentNode.patternModel.appendPattern(pattenModel);
+      }
+    });
   }
 
   disconnectedCallback() {

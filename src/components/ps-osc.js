@@ -3,6 +3,7 @@ import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
 import UgenConnection from 'services/UgenConnection/UgenConnection';
 import ContinuousOscillator from 'services/audio/ContinuousOscillator';
 import { InputType, } from 'services/AudioParameter/SignalParameter';
+import { batchRender, } from 'services/TaskScheduler';
 import ContinuousParam from '../util/ContinuousParam';
 import metronomeManager from 'services/metronome/metronomeManager';
 import MetronomeScheduler from 'services/metronome/MetronomeScheduler';
@@ -16,14 +17,9 @@ export default class PsEnvOsc extends PsBase {
     return [ 'wav', 'frequency', 'modulator' ];
   }
 
-  constructor() {
-    super();
-    this.isMounted = false;
-  }
-
   connectedCallback() {
+    super.connectedCallback();
     console.log('ps-osc connected');
-    this.isMounted = true;
 
     const waveform = this.getAttribute('wav');
     this.osc = new ContinuousOscillator(440, waveform);
@@ -50,7 +46,6 @@ export default class PsEnvOsc extends PsBase {
       }),
     };
 
-    this.audioModel.connectTo(this.parentNode.audioModel);
     this.metronomeSchedulable = new MetronomeScheduler({
       start: () => {
         this.osc.startAtTime();
@@ -62,6 +57,11 @@ export default class PsEnvOsc extends PsBase {
     if (metronomeManager.getMetronome().isRunning) {
       this.osc.startAtTime();
     }
+    batchRender(() => {
+      if (this.parentNode.audioModel) {
+        this.audioModel.connectTo(this.parentNode.audioModel);
+      }
+    });
   }
 
   disconnectedCallback() {

@@ -18,7 +18,6 @@ export default class PsToggleButton extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('PsToggleButton')
     const button = buildButton(this.toggle.bind(this));
     this.appendChild(button);
   }

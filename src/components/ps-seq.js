@@ -43,6 +43,7 @@ export default class PsSeq extends PsBase {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     this.patternModel = new PatternManager();
     this.metronomeSchedulable = new MetronomeScheduler({
       processTick: this.handleTick.bind(this),

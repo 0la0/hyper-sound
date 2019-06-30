@@ -4,6 +4,7 @@ import UgenConnection from 'services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from 'services/UgenConnection/AudioEventToModelAdapter';
 import envelopedOscilator from 'services/audio/EnvelopedOscillator';
 import { msToSec } from 'services/Math';
+import { batchRender, } from 'services/TaskScheduler';
 import DiscreteParameter, { InputType, } from '../util/DiscreteParam';
 import TriggerParameter from '../util/TriggerParameter';
 import DiscreteModulationParam from '../util/DiscreteModulationParam';
@@ -17,13 +18,8 @@ export default class PsEnvOsc extends PsBase {
     return [ 'attack', 'sustain', 'release', 'wav', 'trigger', 'modulator' ];
   }
 
-  constructor() {
-    super();
-    this.isMounted = false;
-  }
-
   connectedCallback() {
-    this.isMounted = true;
+    super.connectedCallback();
     this.eventModel = new AudioEventToModelAdapter(this.schedule.bind(this));
     this.audioModel = new UgenConnection('ENVELOPED_OSC', this.eventModel, UgenConnectinType.MESSAGE, UgenConnectinType.SIGNAL);
 
@@ -69,7 +65,11 @@ export default class PsEnvOsc extends PsBase {
         element: this,
       }),
     };
-    this.audioModel.connectTo(this.parentNode.audioModel);
+    batchRender(() => {
+      if (this.parentNode.audioModel) {
+        this.audioModel.connectTo(this.parentNode.audioModel);
+      }
+    });
   }
 
   disconnectedCallback() {
@@ -78,6 +78,7 @@ export default class PsEnvOsc extends PsBase {
   }
 
   schedule(message) {
+    console.log('schedule', message)
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
       const outputs = [...this.eventModel.getOutlets()];

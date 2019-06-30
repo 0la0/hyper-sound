@@ -9,6 +9,7 @@ export default class PsDac extends PsBase {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     this.audioModel = new UgenConnection('DAC', new Dac(), UgenConnectinType.SIGNAL, UgenConnectinType.EMPTY);
   }
 
