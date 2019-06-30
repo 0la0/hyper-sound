@@ -78,7 +78,6 @@ export default class PsEnvOsc extends PsBase {
   }
 
   schedule(message) {
-    console.log('schedule', message)
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
       const outputs = [...this.eventModel.getOutlets()];

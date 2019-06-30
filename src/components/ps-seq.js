@@ -12,6 +12,7 @@ class PatternManager {
   }
 
   appendPattern(pattern) {
+    console.log('sequence apeand cool pat', pattern);
     this.patterns.push(pattern);
     const onRemoveCallback = () => {
       this.patterns = this.patterns.filter(p => pattern !== p);
