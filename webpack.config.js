@@ -10,11 +10,12 @@ const webpackConfig = {
     main: './index.js',
   },
   output: {
-    publicPath: 'scripts/',
-    path: path.resolve(__dirname, 'dist', 'scripts'),
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js'
+    publicPath: 'dist/',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'psmarkup.js',
+    sourceMapFilename: 'psmarkup.js.map',
+    library: 'ps-markup',
+    libraryTarget: 'umd',
   },
   devtool: 'source-map',
   module: {

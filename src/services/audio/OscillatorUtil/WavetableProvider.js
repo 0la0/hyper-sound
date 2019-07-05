@@ -1,13 +1,15 @@
 import PeriodicWave from './PeriodicWave';
+import wavetables from './Wavetables';
 
-let periodicWaves = {};
+const periodicWaves = {};
 
-import('./Wavetables')
-  .then((wavetablesModule) => {
-    const wavetables = wavetablesModule.default;
-    periodicWaves = Object.keys(wavetables)
-      .reduce((obj, key) => Object.assign(obj, { [key]: new PeriodicWave(wavetables[key]) }), {});
-  })
-  .catch(error => console.log('Import Wavetables error:', error));
-
-export const getPeriodicWave = waveform => periodicWaves[waveform];
+export function getPeriodicWave(waveform) {
+  if (!wavetables[key]) {
+    return;
+  }
+  if (!periodicWaves[waveform]) {
+    const periodicWave = new PeriodicWave(waveform);
+    periodicWaves[waveform] = periodicWave;
+  }
+  return periodicWaves[waveform];
+}

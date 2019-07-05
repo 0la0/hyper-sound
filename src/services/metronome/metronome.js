@@ -38,6 +38,7 @@ export default class Metronome {
       this.nextTickSchedule.midi = performance.now() + 1; // TOOD: tune this param
       this.nextTickSchedule.audio = this.audioContext.currentTime;
       this.noteScheduler.start();
+      console.log('postMessage')
       this.timerWorker.postMessage('start');
       this.isRunning = true;
     });
