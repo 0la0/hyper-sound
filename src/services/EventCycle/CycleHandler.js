@@ -26,11 +26,21 @@ class Counter {
 }
 
 export default class CycleHandler {
-  constructor(patternHandlers) {
-    // console.log('patternHa')
+  constructor(patternHandlers = []) {
     this.patternHandlers = patternHandlers;
     this.cycleIndex = 0;
     this.counter = new Counter(0);
+  }
+
+  appendPattern(pattern) {
+    this.patternHandlers.push(pattern);
+    return () => this.removePattern(pattern);
+  }
+
+  updatePattern() {}
+
+  removePattern(pattern) {
+    this.patternHandlers = this.patternHandlers.filter(p => p !== pattern);
   }
 
   handleTick(time, tickLength) {
@@ -48,6 +58,9 @@ export default class CycleHandler {
     this.counter.increment();
     if (this.counter.isDone()) {
       this.cycleIndex = (this.cycleIndex + 1) % this.patternHandlers.length;
+      if (this.cycleIndex >= this.patternHandlers.length) {
+        this.cycleIndex = 0;
+      }
       this.counter.reset();
     }
     return audioEvents;

@@ -1,13 +1,14 @@
-let fns = [];
+let functions = [];
 let nextPaint;
 
 export function batchRender(fn) {
-  fns.push(fn);
+  functions.push(fn);
   if (nextPaint) {
     return;
   }
   nextPaint = requestAnimationFrame(() => {
-    fns.forEach(fn => fn());
+    functions.forEach(fn => fn());
+    functions = [];
     nextPaint = undefined;
   });
 }

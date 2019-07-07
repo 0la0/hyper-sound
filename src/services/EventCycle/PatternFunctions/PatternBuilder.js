@@ -1,6 +1,7 @@
 import parseCycle from 'services/EventCycle/Pattern/PatternStringParser';
 import getRelativeCycle from 'services/EventCycle/Pattern/RelativeCycleBuilder';
 import Pattern from 'services/EventCycle/Pattern/Pattern';
+import { uuid } from 'services/Math';
 import PatternTransformer from './PatternTransformer';
 
 export default class PatternBuilder extends PatternTransformer{
@@ -13,11 +14,16 @@ export default class PatternBuilder extends PatternTransformer{
       throw new Error(`Pattern base address must be a string, received: ${baseAddress}`);
     }
     this.baseAddress = baseAddress;
+    this.setValue(patternString);
+    this.numTicks = 16;
+    this.cnt = 0;
+    this.id = uuid();
+  }
+
+  setValue(patternString) {
     this.patternString = patternString;
     this.pattern = parseCycle(patternString);
     this.relativeCycle = this.pattern.ok ? getRelativeCycle(this.pattern.content, 0, 1, this.baseAddress) : [];
-    this.numTicks = 16;
-    this.cnt = 0;
   }
 
   tick() {
@@ -43,15 +49,3 @@ export default class PatternBuilder extends PatternTransformer{
     });
   }
 }
-
-// export default function pattern(...args) {
-//   let patternBuilderArgs = {};
-//   if (args.length < 2) {
-//     patternBuilderArgs.patternString = args[0];
-//     return new PatternBuilder({ patternString: args[0] });
-//   }
-//   return new PatternBuilder({
-//     baseAddress: args[0],
-//     patternString: args[1]
-//   });
-// }

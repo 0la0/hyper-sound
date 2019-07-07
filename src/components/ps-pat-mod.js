@@ -20,11 +20,11 @@ export default class PsPatternMod extends PsBase {
   addTransform(key, value) {
     const transformer = transformDelegate[key](value);
     this.transforms[key] = transformer;
-    this.patterns.forEach(pattern => pattern.pattern.addTransform(transformer));
+    this.patterns.forEach(pattern => pattern.addTransform(transformer));
   }
 
   removeTransform(key) {
-    this.patterns.forEach(pattern => pattern.pattern.removeTransform(this.transforms[key]));
+    this.patterns.forEach(pattern => pattern.removeTransform(this.transforms[key]));
     delete this.transforms[key];
   }
 
@@ -42,14 +42,27 @@ export default class PsPatternMod extends PsBase {
 
     this.patternModel = {
       appendPattern: (pattern) => {
-        Object.values(this.transforms).forEach(transform => pattern.pattern.addTransform(transform));
+        Object.values(this.transforms).forEach(transform => pattern.addTransform(transform));
         this.patterns.push(pattern);
         if (this.parentNode.patternModel) {
-          return this.parentNode.patternModel.appendPattern(pattern);
+          const parentOnRemoveCallback = this.parentNode.patternModel.appendPattern(pattern);
+          return () => {
+            this.patterns = this.patterns.filter(p => p !== pattern);
+            parentOnRemoveCallback();
+          };
         }
         return () => {};
       },
-      updatePattern: () => {}
+      updatePattern: (pattern) => {
+        this.patterns.map(p => {
+          if (p.id === pattern.id) {
+            Object.values(this.transforms).forEach(transform => pattern.addTransform(transform));
+            this.parentNode.patternModel.updatePattern(pattern);
+            return pattern;
+          }
+          return p;
+        });
+      }
     };
   }
 
