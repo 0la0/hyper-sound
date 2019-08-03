@@ -27,5 +27,8 @@ export default class PsToggleButton extends HTMLElement {
     this.isOn ?
       metronomeManager.getMetronome().start() :
       metronomeManager.getMetronome().stop();
+    document.dispatchEvent(new CustomEvent('metronometoggle', {
+      detail: { isOn: this.isOn },
+    }));
   }
 }

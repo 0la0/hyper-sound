@@ -1,7 +1,7 @@
 {
-  "name": "live-vdom",
+  "name": "ps-markup",
   "version": "0.0.1",
-  "description": "A minimal v-dom implementation for live evaluation",
+  "description": "Audio synthesis and pattern generation with markup",
   "main": "dist/psmarkup.js",
   "scripts": {
     "build": "webpack -r esm --mode=development --content-base src",
