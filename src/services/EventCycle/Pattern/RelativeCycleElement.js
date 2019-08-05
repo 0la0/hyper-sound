@@ -1,4 +1,4 @@
-import { floatingPrecision } from 'services/Math';
+import { floatingPrecision } from '../../Math';
 
 export default class RelativeCycleElement {
   constructor(element, relativeTime) {

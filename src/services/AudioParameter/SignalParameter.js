@@ -1,4 +1,4 @@
-import UgenConnection from 'services/UgenConnection/UgenConnection';
+import UgenConnection from '../src/services/UgenConnection/UgenConnection';
 
 // TODO: COMBINE WITH PATCH PARAM TYPES
 const InputTypes = {

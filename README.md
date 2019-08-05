@@ -11,7 +11,7 @@ build: `npm run build`
 
 ---
 
-## Usage
+## Usage example
 
 ```html
 <ps-dac>

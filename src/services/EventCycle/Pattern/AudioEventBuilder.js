@@ -1,4 +1,4 @@
-import AudioEvent from 'services/EventBus/AudioEvent';
+import AudioEvent from '../../EventBus/AudioEvent';
 
 function getNumericValue(str) {
   const floatNote = parseFloat(str, 10);

@@ -26,6 +26,7 @@ export default class PsSeq extends PsBase {
   handleTick(tickNumber, time) {
     const audioEvents = this.cycleHandler.handleTick(time, metronomeManager.getMetronome().getTickLength());
     if (!audioEvents) { return; }
+    console.log('audioEvents', audioEvents)
     audioEvents.forEach(audioEvent => audioEventBus.publish(audioEvent));
   }
 }

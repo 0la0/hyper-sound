@@ -1,4 +1,4 @@
-import { AUDIO_TICK_MULTIPLIER } from 'services/midi/util';
+import { AUDIO_TICK_MULTIPLIER } from '../midi/util';
 
 export default class TimeSchedule {
   constructor(audio, midi) {
