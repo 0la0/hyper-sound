@@ -5,7 +5,6 @@ import ContinuousOscillator from 'services/audio/ContinuousOscillator';
 import { InputType, } from 'services/AudioParameter/SignalParameter';
 import { batchRender, } from 'services/TaskScheduler';
 import ContinuousParam from '../util/ContinuousParam';
-import metronome, { MetronomeScheduler } from '../services/metronome';
 
 export default class PsEnvOsc extends PsBase {
   static get tag() {
@@ -23,6 +22,7 @@ export default class PsEnvOsc extends PsBase {
     const waveform = this.getAttribute('wav');
     this.osc = new ContinuousOscillator(440, waveform);
     this.audioModel = new UgenConnection('CONTINUOUS_OSC', this.osc, UgenConnectinType.EMPTY, UgenConnectinType.SIGNAL);
+    
     
     this.paramMap = {
       frequency: new ContinuousParam({
@@ -45,17 +45,12 @@ export default class PsEnvOsc extends PsBase {
       }),
     };
 
-    this.metronomeSchedulable = new MetronomeScheduler({
-      start: () => {
-        this.osc.startAtTime();
-        console.log('starting')
-      },
-      stop: () => this.osc.stop(),
-    });
-    metronome.register(this.metronomeSchedulable);
-    if (metronome.isRunning()) {
-      this.osc.startAtTime();
-    }
+    this.start = () => this.osc.startAtTime();
+    this.stop = () => this.osc.stop();
+
+    document.addEventListener('METRONOME_START', this.start);
+    document.addEventListener('METRONOME_STOP', this.stop);
+
     batchRender(() => {
       if (this.parentNode.audioModel) {
         this.audioModel.connectTo(this.parentNode.audioModel);
@@ -67,7 +62,9 @@ export default class PsEnvOsc extends PsBase {
     console.log('ps-osc disconnected');
     Object.keys(this.paramMap).forEach(key => this.paramMap[key].disconnect());
     this.audioModel.disconnect();
-    metronome.deregister(this.metronomeSchedulable);
+    
+    document.removeEventListener('METRONOME_START', this.start);
+    document.removeEventListener('METRONOME_STOP', this.stop);
   }
 
   attributeChangedCallback(attrName, oldVal, newVal) {

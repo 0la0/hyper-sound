@@ -36,7 +36,6 @@ const webpackConfig = {
   devServer: {
     port: 3001,
     contentBase: [
-      // path.resolve(__dirname),
       path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'node_modules')
     ],

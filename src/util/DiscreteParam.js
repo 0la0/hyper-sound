@@ -1,4 +1,4 @@
-import Subscription from 'services/EventBus/Subscription';
+import { Subscription } from 'sea';
 import { audioEventBus } from 'services/EventBus';
 import ParamTable from 'services/AudioParameter/ParamTable';
 

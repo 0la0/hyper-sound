@@ -1,9 +1,9 @@
+import { Subscription } from 'sea';
 import BaseUnitGenerator from 'services/UnitGenerators/BaseUnitGenerator';
 import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
 import UgenConnection from 'services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from 'services/UgenConnection/AudioEventToModelAdapter';
 import { audioEventBus } from 'services/EventBus';
-import Subscription from 'services/EventBus/Subscription';
 
 export default class MessageAddress extends BaseUnitGenerator {
   constructor(address) {
