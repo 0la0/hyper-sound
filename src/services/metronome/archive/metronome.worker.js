@@ -6,11 +6,6 @@ const STOP = 'stop';
 const TICK = 'tick';
 
 function handleMessage(event) {
-  // Function(`
-  //   // console.log('window', window);
-  //   // console.log('document', document);
-  //   console.log('onmessage', onmessage);
-  // `)();
   if (event.data === START) {
     timerID = setInterval(() => postMessage(TICK), interval);
   }

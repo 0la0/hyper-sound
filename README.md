@@ -1,4 +1,4 @@
-# PS-Markup (markup for phase-scripter)
+# PS-Sound (markup for phase-scripter)
 Create audio graphs with HTML. Pattern DSL similar to Tidal Cycles.
 
 Development ongoing, documentation to follow.

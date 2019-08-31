@@ -1,4 +1,4 @@
-import Subscription from 'services/EventBus/Subscription';
+import { Subscription } from 'sea';
 import { audioEventBus } from 'services/EventBus';
 
 const PARENTHESES = /\(([^)]+)\)/;

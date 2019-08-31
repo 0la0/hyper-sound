@@ -1,4 +1,4 @@
-import { PatternTransform } from 'services/EventCycle/PatternFunctions/PatternTransformer';
+import { PatternTransform } from './PatternTransformer';
 
 export default function degrade(threshold) {
   if (Number.isNaN(threshold) || threshold < 0 || threshold > 1) {

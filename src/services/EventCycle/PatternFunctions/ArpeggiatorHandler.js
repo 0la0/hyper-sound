@@ -1,4 +1,4 @@
-import { PatternTransform } from 'services/EventCycle/PatternFunctions/PatternTransformer';
+import { PatternTransform } from './PatternTransformer';
 
 const countPredicateFn = () => true;
 

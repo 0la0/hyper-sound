@@ -23,7 +23,13 @@ class AudioGraph {
     this.audioContext = new AudioCtx();
     this.masterCompressor = this.audioContext.createDynamicsCompressor();
     this.masterCompressor.connect(this.audioContext.destination);
+    this.startTimestamp = 0;
     initAudioWorklets(this.audioContext);
+
+    document.addEventListener('METRONOME_START', (event) => {
+      this.startTimestamp = (event.detail.timestamp / 1000) - this.audioContext.currentTime;
+    });
+    document.addEventListener('METRONOME_STOP', () => console.log('audio graph stop'));
   }
 
   startContext() {
@@ -33,11 +39,11 @@ class AudioGraph {
     return this.audioContext.resume();
   }
 
-  getCurrentTime () {
+  getCurrentTime() {
     return this.audioContext.currentTime;
   }
 
-  getAudioContext () {
+  getAudioContext() {
     return this.audioContext;
   }
 
@@ -47,6 +53,10 @@ class AudioGraph {
 
   getOutput() {
     return this.masterCompressor;
+  }
+
+  getAudioTimeForTimestamp(timestamp) {
+    return (timestamp / 1000) - this.startTimestamp;
   }
 }
 

@@ -1,18 +1,19 @@
 {
-  "name": "ps-markup",
+  "name": "ps-sound",
   "version": "0.0.1",
   "description": "Audio synthesis and pattern generation with markup",
-  "main": "dist/psmarkup.js",
+  "main": "dist/pssound.js",
   "scripts": {
     "build": "webpack -r esm --mode=development --content-base src",
     "lint": "eslint src test",
-    "start": "webpack-dev-server -r esm --mode=development --inline --colors --progress --content-base src",
+    "start": "webpack-dev-server -r esm --mode=development --inline --colors --progress",
     "test": "mocha -r esm test/*.test.js"
   },
   "author": "Luke Anderson",
   "license": "ISC",
   "dependencies": {
-    "@babel/parser": "^7.4.5"
+    "ps-pattern": "../ps-pattern",
+    "sea": "../event-bus"
   },
   "devDependencies": {
     "eslint": "^6.0.0",

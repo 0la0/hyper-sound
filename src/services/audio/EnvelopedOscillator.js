@@ -4,9 +4,13 @@ import { AsrEnvelope } from 'services/audio/Envelope';
 import applyTypeToOscillator from './OscillatorUtil';
 
 // TODO: change midi note param to frequency
-export default function envelopedOscilator(midiNote, startTime, asr, type, gain, outputs, modulator) {
+export default function envelopedOscilator(midiNote, timestamp, asr, type, gain, outputs, modulator) {
   const frequency = mtof(midiNote);
-  startTime = startTime || audioGraph.getCurrentTime();
+  // console.log('enveloped osc', startTime)
+  // const startTime = startTime || audioGraph.getCurrentTime();
+  const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);
+  console.log('startTime?', startTime);
+  // const startTime = audioGraph.getCurrentTime();
   const endTime = startTime + asr.attack + asr.sustain + asr.release;
   const osc = audioGraph.getAudioContext().createOscillator();
   const envelope = new AsrEnvelope(asr.attack, asr.sustain, asr.release).build(startTime, gain);

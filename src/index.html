@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS-Markup Example</title>
+    <title>PS-Sound Example</title>
     <style>
       html, body {
         width: 100%;
@@ -16,11 +16,33 @@
         font-size: 12px;
         overflow: hidden;
       }
+      .toggle-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 8px;
+        margin: 8px;
+        background: unset;
+        color: #CCC;
+        border: 2px solid #CCC;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     </style>
   </head>
+  <script src="./ps-pattern/dist/pspattern.js"></script>
+  <script src="./pssound.js"></script>
+  <script>
+    let isOn = false;
+    function toggle() {
+      isOn = !isOn;
+      const event = new CustomEvent(isOn ? 'CLOCK_START' : 'CLOCK_STOP');
+      document.dispatchEvent(event);
+    }
+  </script>
   <body>
 
-    <ps-toggle-button></ps-toggle-button>
+    <button class="toggle-button" onclick="toggle(event)">toggle</button>
 
     <div>
 
@@ -38,9 +60,10 @@
       </ps-gain> -->
 
       <ps-seq>
-        <ps-pat-mod speed="0.5" degrade="0.5">
-          <ps-pat-midi pattern="a:52 a:60 a:65 a:72"></ps-pat-midi>
+        <ps-pat-mod speed="1" degrade="1">
+          <ps-pat-midi pattern="a:52 a:60 , a:72"></ps-pat-midi>
           <ps-pat-midi pattern="a a a"></ps-pat-midi>
+          <!-- <ps-pat-midi pattern="a"></ps-pat-midi> -->
         </ps-pat-mod>
       </ps-seq>
 
@@ -52,6 +75,4 @@
     </div>
 
   </body>
-  <script src="./dist/psmarkup.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
 </html>

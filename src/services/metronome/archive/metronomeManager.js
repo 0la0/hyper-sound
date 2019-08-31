@@ -1,11 +1,11 @@
-import audioGraph from 'services/audio/Graph';
+// import audioGraph from 'services/audio/Graph';
 import Metronome from './metronome';
 import Scheduler from './scheduler';
 
 class MetronomeManager {
   constructor() {
     this.scheduler = new Scheduler();
-    this.metronome = new Metronome(audioGraph.getAudioContext(), this.scheduler);
+    this.metronome = new Metronome(this.scheduler);
   }
 
   // TODO: remove this method and instead provide register / deregister methods

@@ -6,11 +6,13 @@ const workerUrl = URL.createObjectURL(new Blob([workerString]));
 const TICK = 'tick';
 const LOOKAHEAD_TIME = 25;
 const SCHEDULE_AHEAD_TIME = 100;
-const MIDI_TIME_DELAY = 30; // for syncing with audio scheduling
+// const MIDI_TIME_DELAY = 30; // for syncing with audio scheduling
+const MIDI_TIME_DELAY = 0;
+const MIDI_STEP_DELTA = 1000;
 
 export default class Metronome {
-  constructor(audioContext, noteScheduler) {
-    this.audioContext = audioContext;
+  constructor(noteScheduler) {
+    // this.audioContext = audioContext;
     this.noteScheduler = noteScheduler;
     this.nextTickSchedule = new TimeSchedule();
     this.lookahead = LOOKAHEAD_TIME;
@@ -22,10 +24,13 @@ export default class Metronome {
   }
 
   scheduler() {
-    if (this.nextTickSchedule.midi > performance.now() + SCHEDULE_AHEAD_TIME) { return; }
-    const tickLength = this.getTickLength();
-    this.noteScheduler.processTick(this.nextTickSchedule.clone().addMidi(MIDI_TIME_DELAY));
-    this.nextTickSchedule.add(tickLength);
+    // console.log('---scheduler', this.nextTickSchedule.timeStamp, performance.now() + SCHEDULE_AHEAD_TIME)
+    if (this.nextTickSchedule.timeStamp > performance.now() + SCHEDULE_AHEAD_TIME) {
+      return;
+    }
+    // const tickLength = this.getTickLength();
+    this.noteScheduler.processTick(this.nextTickSchedule.clone());
+    this.nextTickSchedule.add(this.getTickLength());
   }
 
   start() {
@@ -34,14 +39,20 @@ export default class Metronome {
       console.log('Cannot start a running metronome');
       return;
     }
-    audioGraph.startContext().then(() => {
-      this.nextTickSchedule.midi = performance.now() + 1; // TOOD: tune this param
-      this.nextTickSchedule.audio = this.audioContext.currentTime;
-      this.noteScheduler.start();
+    // audioGraph.startContext().then(() => {
+      const startTime = performance.now();
+      this.nextTickSchedule.timeStamp = startTime;
+      // document.dispatchEvent(new CustomEvent('CLOCK_START', { detail: { time }, }));
+      // this.nextTickSchedule.midi = performance.now() + 1; // TOOD: tune this param
+      // this.nextTickSchedule.audio = this.audioContext.currentTime;
+      console.log('audio?', audioGraph.getAudioContext())
+      // pass start time to all consumers for syncing ...
+      // or, leave it to the consmers to manage syncing themselves
+      this.noteScheduler.start(startTime);
       console.log('postMessage')
       this.timerWorker.postMessage('start');
       this.isRunning = true;
-    });
+    // });
   }
 
   stop() {

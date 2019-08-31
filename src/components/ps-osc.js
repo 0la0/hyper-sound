@@ -5,8 +5,7 @@ import ContinuousOscillator from 'services/audio/ContinuousOscillator';
 import { InputType, } from 'services/AudioParameter/SignalParameter';
 import { batchRender, } from 'services/TaskScheduler';
 import ContinuousParam from '../util/ContinuousParam';
-import metronomeManager from 'services/metronome/metronomeManager';
-import MetronomeScheduler from 'services/metronome/MetronomeScheduler';
+import metronome, { MetronomeScheduler } from '../services/metronome';
 
 export default class PsEnvOsc extends PsBase {
   static get tag() {
@@ -53,8 +52,8 @@ export default class PsEnvOsc extends PsBase {
       },
       stop: () => this.osc.stop(),
     });
-    metronomeManager.getScheduler().register(this.metronomeSchedulable);
-    if (metronomeManager.getMetronome().isRunning) {
+    metronome.register(this.metronomeSchedulable);
+    if (metronome.isRunning()) {
       this.osc.startAtTime();
     }
     batchRender(() => {
@@ -68,7 +67,7 @@ export default class PsEnvOsc extends PsBase {
     console.log('ps-osc disconnected');
     Object.keys(this.paramMap).forEach(key => this.paramMap[key].disconnect());
     this.audioModel.disconnect();
-    metronomeManager.getScheduler().deregister(this.metronomeSchedulable);
+    metronome.deregister(this.metronomeSchedulable);
   }
 
   attributeChangedCallback(attrName, oldVal, newVal) {

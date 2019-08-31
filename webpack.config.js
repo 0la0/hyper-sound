@@ -12,16 +12,16 @@ const webpackConfig = {
   output: {
     publicPath: 'dist/',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'psmarkup.js',
-    sourceMapFilename: 'psmarkup.js.map',
-    library: 'ps-markup',
+    filename: 'pssound.js',
+    sourceMapFilename: 'pssound.js.map',
+    library: 'ps-sound',
     libraryTarget: 'umd',
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.css$|\.html$|\.worker.js$|\.vert$|\.frag$/,
+        test: /\.css$|\.html$/,
         exclude: /node_modules/,
         loader: 'raw-loader'
       }
@@ -34,7 +34,13 @@ const webpackConfig = {
     }
   },
   devServer: {
-    port: 3001
+    port: 3001,
+    contentBase: [
+      // path.resolve(__dirname),
+      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'node_modules')
+    ],
+    publicPath:  "/"
   },
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
   plugins: [

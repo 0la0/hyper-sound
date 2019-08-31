@@ -1,4 +1,4 @@
-import { PatternTransform } from 'services/EventCycle/PatternFunctions/PatternTransformer';
+import { PatternTransform } from './PatternTransformer';
 
 export default function repeat(numRepeats) {
   if (!Number.isInteger(numRepeats) || numRepeats < 1) {

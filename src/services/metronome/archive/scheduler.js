@@ -27,10 +27,10 @@ export default class Scheduler {
     this.schedulables.delete(schedulable);
   }
 
-  start() {
+  start(startTimestamp) {
     this.tickCounter = 0;
     this.isRunning = true;
-    this.schedulables.forEach(schedulable => schedulable.start());
+    this.schedulables.forEach(schedulable => schedulable.start(startTimestamp));
     this.renderLoop();
   }
 
@@ -39,6 +39,7 @@ export default class Scheduler {
     this.resetCounterVariables();
   }
 
+  // TODO: remove
   renderLoop() {
     if (this.nextScheduledTime >= performance.now() && this.tickToRender !== this.lastTickRendered) {
       this.schedulables.forEach(schedulable => schedulable.render(this.tickCounter, this.lastTickRendered));

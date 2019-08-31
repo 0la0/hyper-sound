@@ -1,4 +1,4 @@
-import { PatternTransform } from 'services/EventCycle/PatternFunctions/PatternTransformer';
+import { PatternTransform } from './PatternTransformer';
 
 export default function rotate(rotation) {
   if (Number.isNaN(rotation) || rotation < 0 || rotation > 1) {

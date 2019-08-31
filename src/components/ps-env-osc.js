@@ -88,7 +88,7 @@ export default class PsEnvOsc extends PsBase {
         sustain: this.paramMap.sustain.getValueForTime(message.time),
         release: this.paramMap.release.getValueForTime(message.time),
       };
-      envelopedOscilator(note, message.time.audio, asr, waveform, 1, outputs, modulationInputs);
+      envelopedOscilator(note, message.time.timeStamp, asr, waveform, 1, outputs, modulationInputs);
     });
   }
 
