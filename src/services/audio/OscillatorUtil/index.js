@@ -1,4 +1,4 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from '../Graph';
 import { getPeriodicWave, } from './WavetableProvider';
 
 const primitiveShorthands = {

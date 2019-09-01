@@ -1,6 +1,6 @@
-import audioGraph from 'services/audio/Graph';
-import {mtof} from 'services/midi/util';
-import { AsrEnvelope } from 'services/audio/Envelope';
+import audioGraph from './Graph';
+import {mtof} from '../midi/util';
+import { AsrEnvelope } from './Envelope';
 import applyTypeToOscillator from './OscillatorUtil';
 
 // TODO: change midi note param to frequency

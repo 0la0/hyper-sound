@@ -1,9 +1,9 @@
 import PsBase from './ps-base';
-import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
-import UgenConnection from 'services/UgenConnection/UgenConnection';
-import ContinuousOscillator from 'services/audio/ContinuousOscillator';
-import { InputType, } from 'services/AudioParameter/SignalParameter';
-import { batchRender, } from 'services/TaskScheduler';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
+import UgenConnection from '../services/UgenConnection/UgenConnection';
+import ContinuousOscillator from '../services/audio/ContinuousOscillator';
+import { InputType, } from '../services/AudioParameter/SignalParameter';
+import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../util/ContinuousParam';
 
 export default class PsEnvOsc extends PsBase {

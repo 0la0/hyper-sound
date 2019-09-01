@@ -1,10 +1,10 @@
 import PsBase from './ps-base';
-import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
-import UgenConnection from 'services/UgenConnection/UgenConnection';
-import AudioEventToModelAdapter from 'services/UgenConnection/AudioEventToModelAdapter';
-import envelopedOscilator from 'services/audio/EnvelopedOscillator';
-import { msToSec } from 'services/Math';
-import { batchRender, } from 'services/TaskScheduler';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
+import UgenConnection from '../services/UgenConnection/UgenConnection';
+import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
+import envelopedOscilator from '../services/audio/EnvelopedOscillator';
+import { msToSec } from '../services/Math';
+import { batchRender, } from '../services/TaskScheduler';
 import DiscreteParameter, { InputType, } from '../util/DiscreteParam';
 import TriggerParameter from '../util/TriggerParameter';
 import DiscreteModulationParam from '../util/DiscreteModulationParam';

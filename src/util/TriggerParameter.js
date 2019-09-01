@@ -1,5 +1,5 @@
 import { Subscription } from 'sea';
-import { audioEventBus } from 'services/EventBus';
+import { audioEventBus } from '../services/EventBus';
 
 const PARENTHESES = /\(([^)]+)\)/;
 

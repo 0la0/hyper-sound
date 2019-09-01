@@ -1,6 +1,6 @@
 import { Subscription } from 'sea';
-import { audioEventBus } from 'services/EventBus';
-import ParamTable from 'services/AudioParameter/ParamTable';
+import { audioEventBus } from '../services/EventBus';
+import ParamTable from '../services/AudioParameter/ParamTable';
 
 export const InputType = {
   number: 'number',

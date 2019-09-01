@@ -27,12 +27,6 @@ const webpackConfig = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      components: path.resolve(__dirname, 'src/components/'),
-      services: path.resolve(__dirname, 'src/services/')
-    }
-  },
   devServer: {
     port: 3001,
     contentBase: [

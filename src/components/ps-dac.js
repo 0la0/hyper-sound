@@ -1,7 +1,7 @@
 import PsBase from './ps-base';
-import Dac from 'services/audio/dac';
-import UgenConnectinType from 'services/UgenConnection/UgenConnectionType';
-import UgenConnection from 'services/UgenConnection/UgenConnection';
+import Dac from '../services/audio/dac';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
+import UgenConnection from '../services/UgenConnection/UgenConnection';
 
 export default class PsDac extends PsBase {
   static get tag() {
