@@ -1,5 +1,5 @@
 import PsBase from './ps-base';
-import Gain from '../services/audio/gain';
+import StereoPanner from '../services/audio/StereoPanner';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import { InputType, } from '../services/AudioParameter/SignalParameter';
@@ -8,7 +8,7 @@ import ContinuousParam from '../util/ContinuousParam';
 
 export default class PsGain extends PsBase {
   static get tag() {
-    return 'ps-gain';
+    return 'ps-pan';
   }
 
   static get observedAttributes() {
@@ -17,17 +17,17 @@ export default class PsGain extends PsBase {
 
   connectedCallback() {
     super.connectedCallback();
-    const gain = new Gain();
+    const stereoPanner = new StereoPanner();
     
     this.isMounted = true;
-    this.audioModel = new UgenConnection('GAIN', gain, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
+    this.audioModel = new UgenConnection('PAN', stereoPanner, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
 
     this.paramMap = {
       value: new ContinuousParam({
         attrName: 'value',
-        param: gain.getGainParam(),
+        param: stereoPanner.getPanParam(),
         inputType: new InputType().numeric().message().signal(),
-        defaultValue: 0.2,
+        defaultValue: 0,
         element: this,
       }),
     };

@@ -2,7 +2,7 @@ import ParamTable from 'services/AudioParameter/ParamTable';
 
 const identity = val => val;
 
-export default class DiscreteSignalParamter {
+export default class DiscreteSignalParameter {
   constructor(defaultValue, paramTransform = identity) {
     this.defaultValue = defaultValue;
     this.paramTransform = paramTransform;

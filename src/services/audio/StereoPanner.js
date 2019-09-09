@@ -1,4 +1,4 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from './Graph';
 
 export default class StereoPanner  {
   constructor (panValue) {
@@ -17,11 +17,6 @@ export default class StereoPanner  {
 
   getInput() {
     return this.panNode;
-  }
-
-  setPanValue(panValue, scheduledTime) {
-    this.panNode.pan.linearRampToValueAtTime(panValue, scheduledTime);
-    return this;
   }
 
   getPanParam() {

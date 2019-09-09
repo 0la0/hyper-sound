@@ -92,12 +92,12 @@ export default class PsEnvOsc extends PsBase {
     });
   }
 
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    if (!this.isMounted) { return; }
-    const param = this.paramMap[attrName];
-    if (!param) {
-      throw new Error(`Observed attribute not mapped ${attrName}`);
-    }
-    param.setValue(newVal);
-  }
+  // attributeChangedCallback(attrName, oldVal, newVal) {
+  //   if (!this.isMounted) { return; }
+  //   const param = this.paramMap[attrName];
+  //   if (!param) {
+  //     throw new Error(`Observed attribute not mapped ${attrName}`);
+  //   }
+  //   param.setValue(newVal);
+  // }
 }

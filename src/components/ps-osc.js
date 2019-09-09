@@ -59,20 +59,17 @@ export default class PsEnvOsc extends PsBase {
   }
 
   disconnectedCallback() {
-    console.log('ps-osc disconnected');
-    Object.keys(this.paramMap).forEach(key => this.paramMap[key].disconnect());
-    this.audioModel.disconnect();
-    
+    super.disconnectedCallback();
     document.removeEventListener('METRONOME_START', this.start);
     document.removeEventListener('METRONOME_STOP', this.stop);
   }
 
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    if (!this.isMounted) { return; }
-    const param = this.paramMap[attrName];
-    if (!param) {
-      throw new Error(`Observed attribute not mapped ${attrName}`);
-    }
-    param.setValue(newVal);
-  }
+  // attributeChangedCallback(attrName, oldVal, newVal) {
+  //   if (!this.isMounted) { return; }
+  //   const param = this.paramMap[attrName];
+  //   if (!param) {
+  //     throw new Error(`Observed attribute not mapped ${attrName}`);
+  //   }
+  //   param.setValue(newVal);
+  // }
 }
