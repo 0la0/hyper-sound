@@ -18,10 +18,7 @@ export default class PsGain extends PsBase {
   connectedCallback() {
     super.connectedCallback();
     const stereoPanner = new StereoPanner();
-    
-    this.isMounted = true;
     this.audioModel = new UgenConnection('PAN', stereoPanner, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
-
     this.paramMap = {
       value: new ContinuousParam({
         attrName: 'value',

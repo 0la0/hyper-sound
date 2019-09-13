@@ -72,11 +72,6 @@ export default class PsEnvOsc extends PsBase {
     });
   }
 
-  disconnectedCallback() {
-    console.log('ps-env-osc disconnected');
-    Object.keys(this.paramMap).forEach(key => this.paramMap[key].disconnect());
-  }
-
   schedule(message) {
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
@@ -91,13 +86,4 @@ export default class PsEnvOsc extends PsBase {
       envelopedOscilator(note, message.time.timeStamp, asr, waveform, 1, outputs, modulationInputs);
     });
   }
-
-  // attributeChangedCallback(attrName, oldVal, newVal) {
-  //   if (!this.isMounted) { return; }
-  //   const param = this.paramMap[attrName];
-  //   if (!param) {
-  //     throw new Error(`Observed attribute not mapped ${attrName}`);
-  //   }
-  //   param.setValue(newVal);
-  // }
 }

@@ -4,6 +4,7 @@ import PsFilter from './ps-filter';
 import PsGain from './ps-gain';
 import PsOsc from './ps-osc';
 import PsPan from './ps-panner';
+import PsTapeDelay from './ps-tape-delay';
 
 export const components = {
   PsDac,
@@ -12,6 +13,7 @@ export const components = {
   PsGain,
   PsOsc,
   PsPan,
+  PsTapeDelay,
 };
 
 export function defineComponents() {

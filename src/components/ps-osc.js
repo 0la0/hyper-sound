@@ -63,13 +63,4 @@ export default class PsEnvOsc extends PsBase {
     document.removeEventListener('METRONOME_START', this.start);
     document.removeEventListener('METRONOME_STOP', this.stop);
   }
-
-  // attributeChangedCallback(attrName, oldVal, newVal) {
-  //   if (!this.isMounted) { return; }
-  //   const param = this.paramMap[attrName];
-  //   if (!param) {
-  //     throw new Error(`Observed attribute not mapped ${attrName}`);
-  //   }
-  //   param.setValue(newVal);
-  // }
 }

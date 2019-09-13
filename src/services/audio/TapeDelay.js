@@ -1,7 +1,7 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from './Graph';
 
-export default class Delay  {
-  constructor (delayTime = 0, feedback = 0.8, wet = 0.6) {
+export default class TapeDelay  {
+  constructor(delayTime = 0, feedback = 0.2, wet = 0.5) {
     const audioContext = audioGraph.getAudioContext();
     this.output = audioContext.createGain();
     this.delay = audioContext.createDelay();
