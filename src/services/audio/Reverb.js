@@ -1,43 +1,28 @@
-import audioGraph from 'services/audio/Graph';
-import buildConvolutionBuffer from 'services/audio/convolutionBuilder';
-
-function undefinedOr(val, fallback) {
-  return ((val === undefined) || (val === null)) ? fallback : val;
-}
+import audioGraph from './Graph';
+import buildConvolutionBuffer from './convolutionBuilder';
+import WetLevel from './WetLevel';
 
 export default class Reverb  {
-  constructor (attack, decay, wet) {
+  constructor (attack = 0.001, decay = 0.6) {
     const audioContext = audioGraph.getAudioContext();
     this.convolver = audioContext.createConvolver();
     this.input = audioContext.createGain();
-    this.dryGain = audioContext.createGain();
-    this.wetGain = audioContext.createGain();
-    this.input.connect(this.dryGain);
-    this.input.connect(this.convolver);
-    this.convolver.connect(this.wetGain);
-
-    this.attack = undefinedOr(attack, 0.1);
-    this.decay = undefinedOr(decay, 0.5);
+    this.wetLevel = new WetLevel(audioContext, this.input, this.convolver);
+    this.attack = attack;
+    this.decay = decay;
     this.generateBuffer();
-    this.setWetLevel(undefinedOr(wet, 0.5), 0);
   }
 
   connect(node) {
-    this.dryGain.connect(node);
-    this.wetGain.connect(node);
+    this.wetLevel.connect(node);
   }
 
   disconnect(node) {
-    this.dryGain.disconnect(node);
-    this.wetGain.disconnect(node);
+    this.wetLevel.disconnect(node);
   }
 
   getInput() {
     return this.input;
-  }
-
-  setGain(gain) {
-    this.gain.gain.setValueAtTime(gain, 0);
   }
 
   setAttack(attack) {
@@ -50,36 +35,14 @@ export default class Reverb  {
     this.generateBuffer();
   }
 
-  setWetLevel(normalValue, scheduledTime) {
-    this.wetGain.gain.linearRampToValueAtTime(normalValue, scheduledTime);
-    this.dryGain.gain.linearRampToValueAtTime(1 - normalValue, scheduledTime);
+  getWetParam() {
+    return this.wetLevel;
   }
 
-  updateParams(attack, decay, wet, scheduledTime) {
-    this.attack = attack;
-    this.decay = decay;
-    this.setWetLevel(wet, scheduledTime);
-    this.generateBuffer();
-  }
-
-  // domain: [-24, 0]
-  // setWetLevel(normalValue) {
-  //   const wetLevel = -24 * (1 - normalValue);
-  //   console.log("input", wetLevel);
-  //   const wetGain = Math.pow(10, wetLevel / 20);
-  //   const dryGain = Math.sqrt(1 - wetGain * wetGain);
-  //   console.log('dry/wet', dryGain, wetGain)
-  //   this.wetGain.gain.value = wetGain;
-  //   this.dryGain.gain.value = dryGain;
-  //
-  //   this.generateBuffer();
-  // }
-
-  // TODO: MOVE TO WEB WORKER?
   generateBuffer() {
-    setTimeout(() => {
-      const buffer = buildConvolutionBuffer(this.attack, this.decay);
-      this.convolver.buffer = buffer;
-    });
+    // TODO: MOVE TO WEB WORKER?
+    setTimeout(() =>
+      this.convolver.buffer = buildConvolutionBuffer(this.attack, this.decay)
+    );
   }
 }

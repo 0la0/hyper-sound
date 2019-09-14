@@ -1,9 +1,10 @@
 export default class WetLevel {
-  constructor(audioContext, dryInput, wetInput) {
+  constructor(audioContext, inputNode, wetNode) {
     this.dryGain = audioContext.createGain();
     this.wetGain = audioContext.createGain();
-    dryInput.connect(this.dryGain);
-    wetInput.connect(this.wetGain);
+    inputNode.connect(this.dryGain);
+    inputNode.connect(wetNode);
+    wetNode.connect(this.wetGain);
   }
 
   connect(node) {

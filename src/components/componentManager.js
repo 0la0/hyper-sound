@@ -4,6 +4,7 @@ import PsFilter from './ps-filter';
 import PsGain from './ps-gain';
 import PsOsc from './ps-osc';
 import PsPan from './ps-panner';
+import PsReverb from './ps-reverb';
 import PsTapeDelay from './ps-tape-delay';
 
 export const components = {
@@ -13,6 +14,7 @@ export const components = {
   PsGain,
   PsOsc,
   PsPan,
+  PsReverb,
   PsTapeDelay,
 };
 

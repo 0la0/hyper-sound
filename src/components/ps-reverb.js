@@ -1,5 +1,5 @@
 import PsBase from './ps-base';
-import TapeDelay from '../services/audio/TapeDelay';
+import Reverb from '../services/audio/Reverb';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import { InputType, } from '../services/AudioParameter/SignalParameter';
@@ -8,37 +8,34 @@ import ContinuousParam from '../util/ContinuousParam';
 
 export default class PsTapeDelay extends PsBase {
   static get tag() {
-    return 'ps-tape-delay';
+    return 'ps-reverb';
   }
 
   static get observedAttributes() {
-    return [ 'delay', 'feedback', 'wet' ];
+    return [ 'attack', 'decay', 'wet' ];
   }
 
   connectedCallback() {
     super.connectedCallback();
-    const delay = new TapeDelay();
-    this.audioModel = new UgenConnection('DELAY', delay, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
+    const reverb = new Reverb();
+    this.audioModel = new UgenConnection('REVERB', reverb, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
 
     this.paramMap = {
-      // TODO: add transform to ContinuousParam so delay time can be in integers
-      delay: new ContinuousParam({
-        attrName: 'delay',
-        param: delay.getDelayParam(),
-        inputType: new InputType().numeric().message().signal(),
-        defaultValue: 0,
-        element: this,
-      }),
-      feedback: new ContinuousParam({
-        attrName: 'feedback',
-        param: delay.getFeedbackParam(),
-        inputType: new InputType().numeric().message().signal(),
-        defaultValue: 0.2,
-        element: this,
-      }),
+      attack: {
+        setValue: (stringValue) => {
+          const val = parseFloat(stringValue, 10);
+          reverb.setAttack(val);
+        },
+      },
+      decay: {
+        setValue: (stringValue) => {
+          const val = parseFloat(stringValue, 10);
+          reverb.setDecay(val);
+        },
+      },
       wet: new ContinuousParam({
         attrName: 'wet',
-        param: delay.getWetParam(),
+        param: reverb.getWetParam(),
         inputType: new InputType().numeric().message().signal(),
         defaultValue: 0.5,
         element: this,
