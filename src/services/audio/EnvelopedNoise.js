@@ -1,6 +1,7 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from './Graph';
 
-export default function envelopedNoiseGenerator(startTime, asr, gain, outputs) {
+export default function envelopedNoiseGenerator(timestamp, asr, gain, outputs) {
+  const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);
   const endTime = startTime + asr.attack + asr.sustain + asr.release;
   const totalTimeMs = (asr.attack + asr.sustain + asr.release) * 1000;
   const noiseGenerator = new AudioWorkletNode(audioGraph.getAudioContext(), 'NoiseGenerator');

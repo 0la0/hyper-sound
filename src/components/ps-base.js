@@ -14,10 +14,8 @@ export default class PsBase extends HTMLElement {
   }
 
   attributeChangedCallback(attrName, oldVal, newVal) {
-    console.log('attributeChangedCallback', attrName, oldVal, newVal);
     if (!this.isMounted) { return; }
     const param = this.paramMap[attrName];
-    console.log('param', attrName, param);
     if (!param) {
       throw new Error(`Observed attribute not mapped ${attrName}`);
     }

@@ -57,14 +57,4 @@ export default class PsFilter extends PsBase {
       }
     });
   }
-
-  // // TODO: move to base class
-  // attributeChangedCallback(attrName, oldVal, newVal) {
-  //   if (!this.isMounted) { return; }
-  //   const param = this.paramMap[attrName];
-  //   if (!param) {
-  //     throw new Error(`Observed attribute not mapped ${attrName}`);
-  //   }
-  //   param.setValue(newVal);
-  // }
 }

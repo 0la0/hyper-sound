@@ -3,6 +3,7 @@ import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
 import envelopedOscilator from '../services/audio/EnvelopedOscillator';
+import envelopedNoise from '../services/audio/EnvelopedNoise';
 import { msToSec } from '../services/Math';
 import { batchRender, } from '../services/TaskScheduler';
 import DiscreteParameter, { InputType, } from '../util/DiscreteParam';
@@ -83,7 +84,12 @@ export default class PsEnvOsc extends PsBase {
         sustain: this.paramMap.sustain.getValueForTime(message.time),
         release: this.paramMap.release.getValueForTime(message.time),
       };
-      envelopedOscilator(note, message.time.timeStamp, asr, waveform, 1, outputs, modulationInputs);
+      if (waveform === 'noise') {
+        // params: startTime, asr, gain, outputs
+        envelopedNoise(message.time.timeStamp, asr, 1, outputs);
+      } else {
+        envelopedOscilator(note, message.time.timeStamp, asr, waveform, 1, outputs, modulationInputs);
+      }
     });
   }
 }
