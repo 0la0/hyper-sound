@@ -4,15 +4,15 @@
  *  http://music.columbia.edu/cmc/MusicAndComputers/chapter4/04_06.php
  *  http://msp.ucsd.edu/techniques/v0.11/book-html/node78.html
  */
-import audioGraph from 'services/audio/Graph';
-import WetLevel from 'services/audio/WetLevel';
-import { getCarrierFunction } from './carrierFunctions';
+import audioGraph from '../Graph';
+import WetLevel from '../WetLevel';
+import { getCarrierFunction, CARRIER_NAMES } from './carrierFunctions';
 
 function createCurve(carrierFunction, sampleRate, multiplier) {
-  let curve = new Float32Array(sampleRate);
+  const curve = new Float32Array(sampleRate);
   for (let i = 0; i < sampleRate; i++) {
     //adjust x such that the curve is centered in its domain
-    let x = i * 2 / sampleRate - 1;
+    const x = i * 2 / sampleRate - 1;
     //sigmoid with fast dropoff, range is (-1, 1)
     curve[i] = carrierFunction(x, multiplier, sampleRate);
   }
@@ -45,5 +45,14 @@ export default class Waveshaper {
 
   getWetParam() {
     return this.wetLevel;
+  }
+
+  setType(type) {
+    if (!CARRIER_NAMES[type]) {
+      console.warn(`Invalid waveshaper type: ${type}`);
+      return;
+    }
+    const carrierFunction = getCarrierFunction(type);
+    this.waveshaperNode.curve = createCurve(carrierFunction, this.sampleRate, 50);
   }
 }

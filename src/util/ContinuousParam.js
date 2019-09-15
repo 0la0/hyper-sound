@@ -89,6 +89,7 @@ export default class ContinuousParam {
       return this._setDefaultValue();
     }
     this.param.linearRampToValueAtTime(numericValue, 0);
+    // this.param.value = numericValue;
     this.isConstant = true;
   }
 

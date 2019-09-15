@@ -47,18 +47,20 @@
     <div>
 
       <ps-dac>
-        <!-- <ps-filter type="lowpass" frequency="440" q="1" gain="1"> -->
           <!-- <ps-tape-delay delay="0.120" feedback="0.8" wet="0.8"> -->
           <ps-gain value="0.5">
-            <ps-reverb attack="0.001" decay="0.6" wet="0.9">
-                <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
-            </ps-reverb>
+            <!-- <ps-reverb attack="0.001" decay="0.6" wet="0.9"> -->
+            <!-- <ps-filter type="lowpass" frequency="22050" q="1" gain="1"> -->
+            <ps-waveshaper type="sig" wet="0.5"> 
+              <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
+            </ps-waveshaper>
+                <!-- </ps-filter> -->
+                <!-- </ps-reverb> -->
           </ps-gain>
           <!-- </ps-tape-delay> -->
           <!-- <ps-gain value="0.2">
             <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
           </ps-gain> -->
-        <!-- </ps-filter> -->
       </ps-dac>
 
       <!-- <ps-gain value="100" id="testmod">

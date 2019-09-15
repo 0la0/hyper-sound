@@ -1,5 +1,5 @@
 import PsBase from './ps-base';
-import Reverb from '../services/audio/Reverb';
+import Waveshaper from '../services/audio/Waveshaper';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import { InputType, } from '../services/AudioParameter/SignalParameter';
@@ -8,34 +8,26 @@ import ContinuousParam from '../util/ContinuousParam';
 
 export default class PsReverb extends PsBase {
   static get tag() {
-    return 'ps-reverb';
+    return 'ps-waveshaper';
   }
 
   static get observedAttributes() {
-    return [ 'attack', 'decay', 'wet' ];
+    return [ 'type', 'wet' ];
   }
 
   connectedCallback() {
     super.connectedCallback();
-    const reverb = new Reverb();
-    this.audioModel = new UgenConnection('REVERB', reverb, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
+    const waveshaper = new Waveshaper('clip');
+    this.audioModel = new UgenConnection('WAVESHAPER', waveshaper, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
 
     this.paramMap = {
-      attack: {
-        setValue: (stringValue) => {
-          const val = parseFloat(stringValue, 10);
-          reverb.setAttack(val);
-        },
-      },
-      decay: {
-        setValue: (stringValue) => {
-          const val = parseFloat(stringValue, 10);
-          reverb.setDecay(val);
-        },
+      type: {
+        // one of: { squ, cube, cheb, sig, clip }
+        setValue: type => waveshaper.setType(type),
       },
       wet: new ContinuousParam({
         attrName: 'wet',
-        param: reverb.getWetParam(),
+        param: waveshaper.getWetParam(),
         inputType: new InputType().numeric().message().signal(),
         defaultValue: 0.5,
         element: this,

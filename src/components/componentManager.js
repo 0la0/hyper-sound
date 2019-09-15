@@ -6,6 +6,7 @@ import PsOsc from './ps-osc';
 import PsPan from './ps-panner';
 import PsReverb from './ps-reverb';
 import PsTapeDelay from './ps-tape-delay';
+import PsWaveshaper from './ps-waveshaper';
 
 export const components = {
   PsDac,
@@ -16,6 +17,7 @@ export const components = {
   PsPan,
   PsReverb,
   PsTapeDelay,
+  PsWaveshaper
 };
 
 export function defineComponents() {
