@@ -1,10 +1,11 @@
-import audioGraph from 'services/audio/Graph';
-import WetLevel from 'services/audio/WetLevel';
+import audioGraph from './Graph';
+import WetLevel from './WetLevel';
+import { getWorklet } from './WorkletUtil';
 
-export default class Bitcrusher  {
-  constructor() {
+class Bitcrusher  {
+  constructor(bitrusher) {
     const audioContext = audioGraph.getAudioContext();
-    this.bitcrusher = new AudioWorkletNode(audioContext, 'Bitcrusher');
+    this.bitcrusher = bitrusher;
     this.input = audioContext.createGain();
     this.wetLevel = new WetLevel(audioContext, this.input, this.bitcrusher);
     this.input.connect(this.bitcrusher);
@@ -33,4 +34,9 @@ export default class Bitcrusher  {
   getWetParam() {
     return this.wetLevel;
   }
+}
+
+export default function buildBitcrusher() {
+  return getWorklet(audioGraph.getAudioContext(), 'Bitcrusher')
+    .then(bitcrusherNode => new Bitcrusher(bitcrusherNode));
 }

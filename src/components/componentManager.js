@@ -1,3 +1,4 @@
+import PsCrush from './ps-crush';
 import PsDac from './ps-dac';
 import PsEnvOsc from './ps-env-osc';
 import PsFilter from './ps-filter';
@@ -9,6 +10,7 @@ import PsTapeDelay from './ps-tape-delay';
 import PsWaveshaper from './ps-waveshaper';
 
 export const components = {
+  PsCrush,
   PsDac,
   PsEnvOsc,
   PsFilter,

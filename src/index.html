@@ -47,14 +47,14 @@
     <div>
 
       <ps-dac>
-        <ps-gain value="0.0">
-          <ps-waveshaper type="sig" wet="0.5"> 
+        <ps-gain value="0.7">
+          <ps-crush bit="8" redux="0.5" wet="0.5"> 
             <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
-          </ps-waveshaper>
+          </ps-crush>
         </ps-gain>
-        <ps-gain value="0.8">
-          <ps-env-osc wav="noise" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
-        </ps-gain>
+        <!-- <ps-gain value="0.06">
+          <ps-env-osc wav="noise" attack="0" sustain="0" release="100" trigger="a"></ps-env-osc>
+        </ps-gain> -->
       </ps-dac>
 
       <!-- <ps-gain value="100" id="testmod">
