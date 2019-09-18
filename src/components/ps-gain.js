@@ -18,8 +18,6 @@ export default class PsGain extends PsBase {
   connectedCallback() {
     super.connectedCallback();
     const gain = new Gain();
-    
-    this.isMounted = true;
     this.audioModel = new UgenConnection('GAIN', gain, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
 
     this.paramMap = {

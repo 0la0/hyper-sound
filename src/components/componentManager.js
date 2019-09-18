@@ -3,6 +3,7 @@ import PsDac from './ps-dac';
 import PsEnvOsc from './ps-env-osc';
 import PsFilter from './ps-filter';
 import PsGain from './ps-gain';
+import PsGate from './ps-gate';
 import PsOsc from './ps-osc';
 import PsPan from './ps-panner';
 import PsReverb from './ps-reverb';
@@ -15,6 +16,7 @@ export const components = {
   PsEnvOsc,
   PsFilter,
   PsGain,
+  PsGate,
   PsOsc,
   PsPan,
   PsReverb,
