@@ -6,9 +6,9 @@ import envelopedOscilator from '../services/audio/EnvelopedOscillator';
 import envelopedNoise from '../services/audio/EnvelopedNoise';
 import { msToSec } from '../services/Math';
 import { batchRender, } from '../services/TaskScheduler';
-import DiscreteParameter, { InputType, } from '../util/DiscreteParam';
-import TriggerParameter from '../util/TriggerParameter';
-import DiscreteModulationParam from '../util/DiscreteModulationParam';
+import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam';
+import TriggerParameter from '../services/AudioParameter/TriggerParameter';
+import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
 
 export default class PsEnvOsc extends PsBase {
   static get tag() {

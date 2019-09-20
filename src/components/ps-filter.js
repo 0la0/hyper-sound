@@ -2,10 +2,10 @@ import PsBase from './ps-base';
 import Filter from '../services/audio/Filter';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/SignalParameter';
+import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../util/ContinuousParam';
-import StaticParam from '../util/StaticParam';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam';
+import StaticParam from '../services/AudioParameter/StaticParam';
 
 export default class PsFilter extends PsBase {
   static get tag() {

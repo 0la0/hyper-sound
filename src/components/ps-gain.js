@@ -2,9 +2,9 @@ import PsBase from './ps-base';
 import Gain from '../services/audio/gain';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/SignalParameter';
+import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../util/ContinuousParam';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
 export default class PsGain extends PsBase {
   static get tag() {

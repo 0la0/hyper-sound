@@ -4,9 +4,9 @@ import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
 import { batchRender, } from '../services/TaskScheduler';
-import DiscreteParameter, { InputType, } from '../util/DiscreteParam';
-import TriggerParameter from '../util/TriggerParameter';
-import DiscreteModulationParam from '../util/DiscreteModulationParam';
+import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam';
+import TriggerParameter from '../services/AudioParameter/TriggerParameter';
+import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
 import { msToSec } from '../services/Math';
 
 export default class PsSampler extends PsBase {

@@ -3,9 +3,9 @@ import Gain from '../services/audio/gain';
 import buildBitcrusher from '../services/audio/BitCrusher';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/SignalParameter';
+import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../util/ContinuousParam';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
 export default class PsCrush extends PsBase {
   static get tag() {
