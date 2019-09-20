@@ -8,7 +8,6 @@ const fileMap = {
   hatAccent: `${BASE_PATH}hat_accent${mp3}`,
   hatClosed: `${BASE_PATH}hat_closed${mp3}`,
   hatOpen: `${BASE_PATH}hat_open${mp3}`,
-  kick: `${BASE_PATH}kick${mp3}`,
   snare: `${BASE_PATH}snare${mp3}`,
   tomLow: `${BASE_PATH}tom_low${mp3}`,
   tomHigh: `${BASE_PATH}tom_high${mp3}`
