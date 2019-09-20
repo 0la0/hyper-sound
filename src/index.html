@@ -46,15 +46,16 @@
 
     <div>
 
-      <ps-dac>
+      <!-- <ps-dac>
         <ps-gain value="0.7">
-          <ps-gate value="0.6"> 
-            <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
-          </ps-crush>
+          <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
         </ps-gain>
-        <!-- <ps-gain value="0.06">
-          <ps-env-osc wav="noise" attack="0" sustain="0" release="100" trigger="a"></ps-env-osc>
-        </ps-gain> -->
+      </ps-dac> -->
+
+      <ps-dac>
+        <ps-gain value="0.9">
+          <ps-sampler name="snare" attack="0" sustain="0" release="200" trigger="a"></ps-sampler>
+        </ps-gain>
       </ps-dac>
 
       <!-- <ps-gain value="100" id="testmod">

@@ -1,11 +1,11 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from '../Graph';
 
 export function decodeAudioData(compressedBuffer) {
   try {
     return audioGraph.getAudioContext().decodeAudioData(compressedBuffer);
   } catch (error) {
     if (error instanceof TypeError && error.message === 'Not enough arguments') {
-      // use safari syntax
+      // safari syntax
       return new Promise((resolve, reject) => {
         audioGraph.getAudioContext().decodeAudioData(
           compressedBuffer,
