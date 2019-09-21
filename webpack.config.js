@@ -21,7 +21,7 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.css$|\.html$/,
+        test: /\.css$|\.html$|\.b64mp3$/,
         exclude: /node_modules/,
         loader: 'raw-loader'
       }

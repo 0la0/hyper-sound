@@ -1,20 +1,30 @@
-import loadSample from './SampleLoader';
-
-const BASE_PATH = '/assets/';
-const mp3 = '.mp3';
+import { decodeAudioData } from './SampleLoader';
+import { base64ToArrayBuffer } from '../../Math';
+import crash from '../../../assets/crash.b64mp3';
+import hatAccent from '../../../assets/hat_accent.b64mp3';
+import hatClosed from '../../../assets/hat_closed.b64mp3';
+import hatOpen from '../../../assets/hat_open.b64mp3';
+import kick from '../../../assets/kick.b64mp3';
+import snare from '../../../assets/snare.b64mp3';
+import tomHigh from '../../../assets/tom_high.b64mp3';
+import tomLow from '../../../assets/tom_low.b64mp3';
 
 const fileMap = {
-  crash: `${BASE_PATH}crash${mp3}`,
-  hatAccent: `${BASE_PATH}hat_accent${mp3}`,
-  hatClosed: `${BASE_PATH}hat_closed${mp3}`,
-  hatOpen: `${BASE_PATH}hat_open${mp3}`,
-  snare: `${BASE_PATH}snare${mp3}`,
-  tomLow: `${BASE_PATH}tom_low${mp3}`,
-  tomHigh: `${BASE_PATH}tom_high${mp3}`
+  crash,
+  hatAccent,
+  hatClosed,
+  hatOpen,
+  kick,
+  snare,
+  tomHigh,
+  tomLow
 };
 
 export default function getDefaultSamples() {
-  const loadSamples = Object.keys(fileMap).map(name =>
-    loadSample(fileMap[name]).then(audioBuffer => ({ name, audioBuffer, })));
+  const loadSamples = Object.keys(fileMap).map(name => {
+    const audioArrayBuffer = base64ToArrayBuffer(fileMap[name]);
+    return decodeAudioData(audioArrayBuffer)
+      .then(audioBuffer => ({ name, audioBuffer, }));
+  });
   return Promise.all(loadSamples);
 }

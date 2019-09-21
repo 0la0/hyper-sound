@@ -42,3 +42,13 @@ export function mapToRange(inputMin, inputMax, outputMin, outputMax, x) {
 export function msToSec(ms) {
   return ms / 1000;
 }
+
+export function base64ToArrayBuffer(base64STring) {
+  const binary = atob(base64STring);
+  const buffer = new ArrayBuffer(binary.length);
+  const bytes = new Uint8Array(buffer);
+  for (let i = 0; i < buffer.byteLength; i++) {
+    bytes[i] = binary.charCodeAt(i) & 0xFF;
+  }
+  return buffer;
+}
