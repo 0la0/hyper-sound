@@ -20,11 +20,13 @@ const fileMap = {
   tomLow
 };
 
-export default function getDefaultSamples() {
-  const loadSamples = Object.keys(fileMap).map(name => {
-    const audioArrayBuffer = base64ToArrayBuffer(fileMap[name]);
-    return decodeAudioData(audioArrayBuffer)
-      .then(audioBuffer => ({ name, audioBuffer, }));
-  });
-  return Promise.all(loadSamples);
+export function getDefaultSampleNames() {
+  return Object.keys(fileMap);
+}
+
+export function getDefaultSamples() {
+  return Object.keys(fileMap).map(name => ({
+    name,
+    arrayBuffer: base64ToArrayBuffer(fileMap[name]),
+  }));
 }

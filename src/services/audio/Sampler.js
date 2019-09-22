@@ -4,8 +4,19 @@ import sampleBank from './sampleBank';
 
 const semitoneRatio = Math.pow(2, 1 / 12);
 
+export function previewSample(sampleKey) {
+  const audioBuffer = sampleBank.getAudioBuffer(sampleKey);
+  if (!audioBuffer) { return; }
+  const sampler = audioGraph.getAudioContext().createBufferSource();
+  sampler.buffer = audioBuffer;
+  sampler.connect(audioGraph.getOutput());
+  sampler.onended = () => sampler.disconnect();
+  sampler.start(0);
+}
+
 export default function playSample(sampleKey, timestamp, startOffset, note, asr, outputs) {
   const audioBuffer = sampleBank.getAudioBuffer(sampleKey);
+  if (!audioBuffer) { return; }
   const sampler = audioGraph.getAudioContext().createBufferSource();
   const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);
   const envelope = new AsrEnvelope(asr.attack, asr.sustain, asr.release)

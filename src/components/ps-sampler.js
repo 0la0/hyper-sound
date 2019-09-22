@@ -1,5 +1,5 @@
 import PsBase from './ps-base';
-import playSample from '../services/audio/sampler';
+import playSample from '../services/audio/Sampler';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
