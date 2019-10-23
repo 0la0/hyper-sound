@@ -12,9 +12,9 @@ const webpackConfig = {
   output: {
     publicPath: 'dist/',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'pssound.js',
-    sourceMapFilename: 'pssound.js.map',
-    library: 'ps-sound',
+    filename: 'hypersound.js',
+    sourceMapFilename: 'hypersound.js.map',
+    library: 'hyper-sound',
     libraryTarget: 'umd',
   },
   devtool: 'source-map',

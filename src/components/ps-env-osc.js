@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
@@ -10,9 +10,9 @@ import DiscreteParameter, { InputType, } from '../services/AudioParameter/Discre
 import TriggerParameter from '../services/AudioParameter/TriggerParameter';
 import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
 
-export default class PsEnvOsc extends PsBase {
+export default class HyperSoundEnvOsc extends HyperSoundBase {
   static get tag() {
-    return 'ps-env-osc';
+    return 'h-env-osc';
   }
 
   static get observedAttributes() {

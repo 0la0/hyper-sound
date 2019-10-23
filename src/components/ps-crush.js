@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Gain from '../services/audio/gain';
 import buildBitcrusher from '../services/audio/BitCrusher';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
@@ -7,9 +7,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsCrush extends PsBase {
+export default class HyperSoundCrush extends HyperSoundBase {
   static get tag() {
-    return 'ps-crush';
+    return 'h-crush';
   }
 
   static get observedAttributes() {

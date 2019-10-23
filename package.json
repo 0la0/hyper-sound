@@ -1,8 +1,8 @@
 {
-  "name": "ps-sound",
+  "name": "hyper-sound",
   "version": "0.0.1",
-  "description": "Audio synthesis and pattern generation with markup",
-  "main": "dist/pssound.js",
+  "description": "Audio synthesis with HTML",
+  "main": "dist/hypersound.js",
   "scripts": {
     "build": "webpack -r esm --mode=development --content-base src",
     "lint": "eslint src test",

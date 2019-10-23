@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Waveshaper from '../services/audio/Waveshaper';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
@@ -6,9 +6,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsReverb extends PsBase {
+export default class HyperSoundReverb extends HyperSoundBase {
   static get tag() {
-    return 'ps-waveshaper';
+    return 'h-waveshaper';
   }
 
   static get observedAttributes() {

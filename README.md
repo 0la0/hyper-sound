@@ -1,5 +1,5 @@
-# PS-Sound (markup for phase-scripter)
-Create audio graphs with HTML. Pattern DSL similar to Tidal Cycles.
+# Hyper-Sound
+Audio synthesis with HTML.
 
 Development ongoing, documentation to follow.
 

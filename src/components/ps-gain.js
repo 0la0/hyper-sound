@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Gain from '../services/audio/gain';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
@@ -6,9 +6,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsGain extends PsBase {
+export default class HyperSoundGain extends HyperSoundBase {
   static get tag() {
-    return 'ps-gain';
+    return 'h-gain';
   }
 
   static get observedAttributes() {

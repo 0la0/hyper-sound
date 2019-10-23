@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Gain from '../services/audio/gain';
 import buildGateNode from '../services/audio/gate';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
@@ -7,9 +7,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsGate extends PsBase {
+export default class HyperSoundGate extends HyperSoundBase {
   static get tag() {
-    return 'ps-gate';
+    return 'h-gate';
   }
 
   static get observedAttributes() {

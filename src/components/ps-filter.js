@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Filter from '../services/audio/Filter';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
@@ -7,9 +7,9 @@ import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 import StaticParam from '../services/AudioParameter/StaticParam';
 
-export default class PsFilter extends PsBase {
+export default class HyperSoundFilter extends HyperSoundBase {
   static get tag() {
-    return 'ps-filter';
+    return 'h-filter';
   }
 
   static get observedAttributes() {

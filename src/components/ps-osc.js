@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import ContinuousOscillator from '../services/audio/ContinuousOscillator';
@@ -6,9 +6,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsEnvOsc extends PsBase {
+export default class HyperSoundOsc extends HyperSoundBase {
   static get tag() {
-    return 'ps-osc';
+    return 'h-osc';
   }
 
   static get observedAttributes() {

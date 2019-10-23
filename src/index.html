@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS-Sound Example</title>
+    <title>Hyper-Sound Example</title>
     <style>
       html, body {
         width: 100%;
@@ -31,7 +31,7 @@
     </style>
   </head>
   <script src="./hyper-patterns/dist/hyperpatterns.js"></script>
-  <script src="./pssound.js"></script>
+  <script src="./hypersound.js"></script>
   <script>
     let isOn = false;
     function toggle() {
@@ -46,35 +46,35 @@
 
     <div>
 
-      <ps-dac>
-        <ps-gain value="0.7">
-          <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></ps-env-osc>
-        </ps-gain>
-      </ps-dac>
+      <h-dac>
+        <h-gain value="0.7">
+          <h-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></h-env-osc>
+        </h-gain>
+      </h-dac>
 
-      <ps-dac>
-        <ps-gain value="0.9">
-          <ps-sampler name="snare" attack="0" sustain="0" release="200" trigger="a"></ps-sampler>
-        </ps-gain>
-      </ps-dac>
+      <h-dac>
+        <h-gain value="0.9">
+          <h-sampler name="snare" attack="0" sustain="0" release="200" trigger="a"></h-sampler>
+        </h-gain>
+      </h-dac>
 
-      <!-- <ps-gain value="100" id="testmod">
-        <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></ps-env-osc>
-      </ps-gain> -->
+      <!-- <h-gain value="100" id="testmod">
+        <h-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></h-env-osc>
+      </h-gain> -->
 
       <h-seq>
         <h-pat-mod speed="1" degrade="1">
           <h-pat-midi pattern="a:52 a:60 , a:72"></h-pat-midi>
           <h-pat-midi pattern="a a a"></h-pat-midi>
-          <!-- <ps-pat-midi pattern="a"></ps-pat-midi> -->
+          <!-- <h-pat-midi pattern="a"></h-pat-midi> -->
         </h-pat-mod>
       </h-seq>
 
-      <!-- <ps-dac>
-        <ps-gain value="0.06">
-          <ps-osc wav="sin" frequency="440"></ps-osc>
-        </ps-gain>
-      </ps-dac> -->
+      <!-- <h-dac>
+        <h-gain value="0.06">
+          <h-osc wav="sin" frequency="440"></h-osc>
+        </h-gain>
+      </h-dac> -->
     </div>
 
   </body>

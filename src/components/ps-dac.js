@@ -1,11 +1,11 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import Dac from '../services/audio/dac';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 
-export default class PsDac extends PsBase {
+export default class HyperSoundDac extends HyperSoundBase {
   static get tag() {
-    return 'ps-dac';
+    return 'h-dac';
   }
 
   connectedCallback() {

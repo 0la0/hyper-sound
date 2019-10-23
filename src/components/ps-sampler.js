@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import playSample from '../services/audio/Sampler';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
@@ -9,9 +9,9 @@ import TriggerParameter from '../services/AudioParameter/TriggerParameter';
 import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
 import { msToSec } from '../services/Math';
 
-export default class PsSampler extends PsBase {
+export default class HyperSoundSampler extends HyperSoundBase {
   static get tag() {
-    return 'ps-sampler';
+    return 'h-sampler';
   }
 
   static get observedAttributes() {

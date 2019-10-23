@@ -1,4 +1,4 @@
-import PsBase from './ps-base';
+import HyperSoundBase from './ps-base';
 import TapeDelay from '../services/audio/TapeDelay';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
@@ -6,9 +6,9 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
-export default class PsTapeDelay extends PsBase {
+export default class HyperSoundDelay extends HyperSoundBase {
   static get tag() {
-    return 'ps-tape-delay';
+    return 'h-tape-delay';
   }
 
   static get observedAttributes() {
