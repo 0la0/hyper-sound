@@ -12,13 +12,12 @@
   "author": "Luke Anderson",
   "license": "ISC",
   "dependencies": {
-    "ps-pattern": "../ps-pattern",
-    "sea": "../event-bus"
+    "sea": "github:0la0/sea#1.0.0"
   },
   "devDependencies": {
     "eslint": "^6.0.0",
     "esm": "^3.2.25",
-    "jsdom": "^15.1.1",
+    "hyper-patterns": "../hyper-patterns",
     "mocha": "^6.1.4",
     "raw-loader": "^2.0.0",
     "webpack": "^4.34.0",

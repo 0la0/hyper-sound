@@ -30,7 +30,7 @@
       }
     </style>
   </head>
-  <script src="./ps-pattern/dist/pspattern.js"></script>
+  <script src="./hyper-patterns/dist/hyperpatterns.js"></script>
   <script src="./pssound.js"></script>
   <script>
     let isOn = false;
@@ -62,13 +62,13 @@
         <ps-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></ps-env-osc>
       </ps-gain> -->
 
-      <ps-seq>
-        <ps-pat-mod speed="1" degrade="1">
-          <ps-pat-midi pattern="a:52 a:60 , a:72"></ps-pat-midi>
-          <ps-pat-midi pattern="a a a"></ps-pat-midi>
+      <h-seq>
+        <h-pat-mod speed="1" degrade="1">
+          <h-pat-midi pattern="a:52 a:60 , a:72"></h-pat-midi>
+          <h-pat-midi pattern="a a a"></h-pat-midi>
           <!-- <ps-pat-midi pattern="a"></ps-pat-midi> -->
-        </ps-pat-mod>
-      </ps-seq>
+        </h-pat-mod>
+      </h-seq>
 
       <!-- <ps-dac>
         <ps-gain value="0.06">
