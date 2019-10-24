@@ -1,27 +1,28 @@
-import HyperSoundBase from './ps-base';
-import playSample from '../services/audio/Sampler';
+import HyperSoundBase from './hyper-base';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
+import envelopedOscilator from '../services/audio/EnvelopedOscillator';
+import envelopedNoise from '../services/audio/EnvelopedNoise';
+import { msToSec } from '../services/Math';
 import { batchRender, } from '../services/TaskScheduler';
 import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam';
 import TriggerParameter from '../services/AudioParameter/TriggerParameter';
 import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
-import { msToSec } from '../services/Math';
 
-export default class HyperSoundSampler extends HyperSoundBase {
+export default class HyperSoundEnvOsc extends HyperSoundBase {
   static get tag() {
-    return 'h-sampler';
+    return 'h-env-osc';
   }
 
   static get observedAttributes() {
-    return [ 'attack', 'sustain', 'release', 'name', 'trigger', 'modulator' ];
+    return [ 'attack', 'sustain', 'release', 'wav', 'trigger', 'modulator' ];
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.eventModel = new AudioEventToModelAdapter(this.schedule.bind(this));
-    this.audioModel = new UgenConnection('SAMPLER', this.eventModel, UgenConnectinType.MESSAGE, UgenConnectinType.SIGNAL);
+    this.audioModel = new UgenConnection('ENVELOPED_OSC', this.eventModel, UgenConnectinType.MESSAGE, UgenConnectinType.SIGNAL);
 
     this.paramMap = {
       attack: new DiscreteParameter({
@@ -48,10 +49,10 @@ export default class HyperSoundSampler extends HyperSoundBase {
         transform: msToSec,
         isAddressable: true
       }),
-      name: new DiscreteParameter({
-        attrName: 'name',
+      wav: new DiscreteParameter({
+        attrName: 'wav',
         inputType: InputType.string,
-        defaultValue: '',
+        defaultValue: 'sin',
         element: this,
         isAddressable: false,
       }),
@@ -76,14 +77,19 @@ export default class HyperSoundSampler extends HyperSoundBase {
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
       const outputs = [...this.eventModel.getOutlets()];
-      const sampleName = this.paramMap.name.getValueForTime(message.time);
+      const waveform = this.paramMap.wav.getValueForTime(message.time);
       const modulationInputs = this.paramMap.modulator.modulationInputs;
       const asr = {
         attack: this.paramMap.attack.getValueForTime(message.time),
         sustain: this.paramMap.sustain.getValueForTime(message.time),
         release: this.paramMap.release.getValueForTime(message.time),
       };
-      playSample(sampleName, message.time.timeStamp, 0, note, asr, outputs);
+      if (waveform === 'noise') {
+        // params: startTime, asr, gain, outputs
+        envelopedNoise(message.time.timeStamp, asr, 1, outputs);
+      } else {
+        envelopedOscilator(note, message.time.timeStamp, asr, waveform, 1, outputs, modulationInputs);
+      }
     });
   }
 }

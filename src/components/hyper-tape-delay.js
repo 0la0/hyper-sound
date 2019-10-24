@@ -1,4 +1,4 @@
-import HyperSoundBase from './ps-base';
+import HyperSoundBase from './hyper-base';
 import TapeDelay from '../services/audio/TapeDelay';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';

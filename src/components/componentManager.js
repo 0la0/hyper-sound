@@ -1,29 +1,29 @@
-import PsCrush from './ps-crush';
-import PsDac from './ps-dac';
-import PsEnvOsc from './ps-env-osc';
-import PsFilter from './ps-filter';
-import PsGain from './ps-gain';
-import PsGate from './ps-gate';
-import PsOsc from './ps-osc';
-import PsPan from './ps-panner';
-import PsReverb from './ps-reverb';
-import PsSampler from './ps-sampler';
-import PsTapeDelay from './ps-tape-delay';
-import PsWaveshaper from './ps-waveshaper';
+import HyperCrush from './hyper-crush';
+import HyperDac from './hyper-dac';
+import HyperEnvOsc from './hyper-env-osc';
+import HyperFilter from './hyper-filter';
+import HyperGain from './hyper-gain';
+import HyperGate from './hyper-gate';
+import HyperOsc from './hyper-osc';
+import HyperPan from './hyper-panner';
+import HyperReverb from './hyper-reverb';
+import HyperSampler from './hyper-sampler';
+import HyperTapeDelay from './hyper-tape-delay';
+import HyperWaveshaper from './hyper-waveshaper';
 
 export const components = {
-  PsCrush,
-  PsDac,
-  PsEnvOsc,
-  PsFilter,
-  PsGain,
-  PsGate,
-  PsOsc,
-  PsPan,
-  PsReverb,
-  PsSampler,
-  PsTapeDelay,
-  PsWaveshaper
+  HyperCrush,
+  HyperDac,
+  HyperEnvOsc,
+  HyperFilter,
+  HyperGain,
+  HyperGate,
+  HyperOsc,
+  HyperPan,
+  HyperReverb,
+  HyperSampler,
+  HyperTapeDelay,
+  HyperWaveshaper
 };
 
 export function defineComponents() {

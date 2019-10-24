@@ -1,5 +1,5 @@
-import HyperSoundBase from './ps-base';
-import Reverb from '../services/audio/Reverb';
+import HyperSoundBase from './hyper-base';
+import Waveshaper from '../services/audio/Waveshaper';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import { InputType, } from '../services/AudioParameter/InputType';
@@ -8,34 +8,26 @@ import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 
 export default class HyperSoundReverb extends HyperSoundBase {
   static get tag() {
-    return 'h-reverb';
+    return 'h-waveshaper';
   }
 
   static get observedAttributes() {
-    return [ 'attack', 'decay', 'wet' ];
+    return [ 'type', 'wet' ];
   }
 
   connectedCallback() {
     super.connectedCallback();
-    const reverb = new Reverb();
-    this.audioModel = new UgenConnection('REVERB', reverb, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
+    const waveshaper = new Waveshaper('clip');
+    this.audioModel = new UgenConnection('WAVESHAPER', waveshaper, UgenConnectinType.SIGNAL, UgenConnectinType.SIGNAL);
 
     this.paramMap = {
-      attack: {
-        setValue: (stringValue) => {
-          const val = parseFloat(stringValue, 10);
-          reverb.setAttack(val);
-        },
-      },
-      decay: {
-        setValue: (stringValue) => {
-          const val = parseFloat(stringValue, 10);
-          reverb.setDecay(val);
-        },
+      type: {
+        // one of: { squ, cube, cheb, sig, clip }
+        setValue: type => waveshaper.setType(type),
       },
       wet: new ContinuousParam({
         attrName: 'wet',
-        param: reverb.getWetParam(),
+        param: waveshaper.getWetParam(),
         inputType: new InputType().numeric().message().signal(),
         defaultValue: 0.5,
         element: this,

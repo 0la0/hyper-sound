@@ -1,4 +1,4 @@
-import HyperSoundBase from './ps-base';
+import HyperSoundBase from './hyper-base';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
 import UgenConnection from '../services/UgenConnection/UgenConnection';
 import ContinuousOscillator from '../services/audio/ContinuousOscillator';

@@ -1,4 +1,4 @@
-import HyperSoundBase from './ps-base';
+import HyperSoundBase from './hyper-base';
 import Gain from '../services/audio/gain';
 import buildBitcrusher from '../services/audio/BitCrusher';
 import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
