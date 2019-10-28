@@ -11,8 +11,9 @@ class AudioGraph {
 
     document.addEventListener('METRONOME_START', (event) => {
       this.startTimestamp = (event.detail.timestamp / 1000) - this.audioContext.currentTime;
+      this.startContext();
     });
-    document.addEventListener('METRONOME_STOP', () => console.log('audio graph stop'));
+    document.addEventListener('METRONOME_STOP', () => {});
   }
 
   startContext() {

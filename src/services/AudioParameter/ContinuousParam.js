@@ -1,5 +1,7 @@
 import { Subscription } from 'sea';
+import audioGraph from '../audio/Graph';
 import { audioEventBus } from '../EventBus';
+import { mtof } from '../midi/util';
 
 const PARENTHESES = /\(([^)]+)\)/;
 
@@ -29,7 +31,7 @@ export default class ContinuousParam {
   }
 
   _setDefaultValue() {
-    this.param.linearRampToValueAtTime(this.defaultValue, 0); // TODO: current time + epsilon
+    this.param.exponentialRampToValueAtTime(this.defaultValue, 0);
   }
 
   _teardownPreviousConnections() {
@@ -53,9 +55,11 @@ export default class ContinuousParam {
       .setAddress(address)
       .setOnNext(message => {
         if (this.isConstant) { return; }
+        const time = audioGraph.getAudioTimeForTimestamp(message.time.timeStamp);
+        const note = message.note;
         message.interpolate ?
-          this.param.linearRampToValueAtTime(message.note, message.time.audio) :
-          this.param.setValueAtTime(message.note, message.time.audio);
+          this.param.exponentialRampToValueAtTime(note, time):
+          this.param.setValueAtTime(note, time);
       });
     audioEventBus.subscribe(this.audioEventSubscription);
     this.isConstant = false;
@@ -89,7 +93,6 @@ export default class ContinuousParam {
       return this._setDefaultValue();
     }
     this.param.linearRampToValueAtTime(numericValue, 0);
-    // this.param.value = numericValue;
     this.isConstant = true;
   }
 

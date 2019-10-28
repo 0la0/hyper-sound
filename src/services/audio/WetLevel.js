@@ -26,4 +26,9 @@ export default class WetLevel {
     this.wetGain.gain.linearRampToValueAtTime(wetLevel, time);
     this.dryGain.gain.linearRampToValueAtTime(1 - wetLevel, time);
   }
+
+  exponentialRampToValueAtTime(wetLevel, time) {
+    this.wetGain.gain.exponentialRampToValueAtTime(wetLevel, time);
+    this.dryGain.gain.exponentialRampToValueAtTime(1 - wetLevel, time);
+  }
 }

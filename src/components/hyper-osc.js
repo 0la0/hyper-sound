@@ -17,13 +17,9 @@ export default class HyperSoundOsc extends HyperSoundBase {
 
   connectedCallback() {
     super.connectedCallback();
-    console.log('ps-osc connected');
-
     const waveform = this.getAttribute('wav');
     this.osc = new ContinuousOscillator(440, waveform);
     this.audioModel = new UgenConnection('CONTINUOUS_OSC', this.osc, UgenConnectinType.EMPTY, UgenConnectinType.SIGNAL);
-    
-    
     this.paramMap = {
       frequency: new ContinuousParam({
         attrName: 'frequency',
@@ -44,13 +40,10 @@ export default class HyperSoundOsc extends HyperSoundBase {
         element: this,
       }),
     };
-
     this.start = () => this.osc.startAtTime();
     this.stop = () => this.osc.stop();
-
     document.addEventListener('METRONOME_START', this.start);
     document.addEventListener('METRONOME_STOP', this.stop);
-
     batchRender(() => {
       if (this.parentNode.audioModel) {
         this.audioModel.connectTo(this.parentNode.audioModel);

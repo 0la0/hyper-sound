@@ -9,6 +9,7 @@ export default class HyperSoundBase extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.isMounted = false;
     Object.keys(this.paramMap).forEach(key => this.paramMap[key].disconnect());
     this.audioModel && this.audioModel.disconnect();
   }

@@ -1,6 +1,7 @@
 import { Subscription } from 'sea';
 import { audioEventBus } from '../EventBus';
 import ParamTable from './ParamTable';
+import audioGraph from '../audio/Graph';
 
 export const InputType = {
   number: 'number',
@@ -62,9 +63,8 @@ export default class DiscreteParameter {
     this.audioEventSubscription = new Subscription()
       .setAddress(address)
       .setOnNext(message => {
-        console.log('setOnNext', message);
         const value = this.transform(message.note);
-        this.paramTable.addScheduledValue(message.time.audio, value);
+        this.paramTable.addScheduledValue(message.time.timeStamp, value);
       });
     audioEventBus.subscribe(this.audioEventSubscription);
     this.isConstant = false;
@@ -74,7 +74,7 @@ export default class DiscreteParameter {
     if (this.isConstant) {
       return this.constantValue;
     }
-    return this.paramTable.getValueForTime(time.audio);
+    return this.paramTable.getValueForTime(time);
   }
 
   setValue(val) {

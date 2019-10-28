@@ -77,12 +77,12 @@ export default class HyperSoundEnvOsc extends HyperSoundBase {
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
       const outputs = [...this.eventModel.getOutlets()];
-      const waveform = this.paramMap.wav.getValueForTime(message.time);
+      const waveform = this.paramMap.wav.getValueForTime(message.time.timeStamp);
       const modulationInputs = this.paramMap.modulator.modulationInputs;
       const asr = {
-        attack: this.paramMap.attack.getValueForTime(message.time),
-        sustain: this.paramMap.sustain.getValueForTime(message.time),
-        release: this.paramMap.release.getValueForTime(message.time),
+        attack: this.paramMap.attack.getValueForTime(message.time.timeStamp),
+        sustain: this.paramMap.sustain.getValueForTime(message.time.timeStamp),
+        release: this.paramMap.release.getValueForTime(message.time.timeStamp),
       };
       if (waveform === 'noise') {
         // params: startTime, asr, gain, outputs
