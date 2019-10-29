@@ -76,14 +76,14 @@ export default class HyperSoundSampler extends HyperSoundBase {
     setTimeout(() => {
       const note = message.note !== undefined ? message.note : 60;
       const outputs = [...this.eventModel.getOutlets()];
-      const sampleName = this.paramMap.name.getValueForTime(message.time.timeStamp);
+      const sampleName = this.paramMap.name.getValueForTime(message.time);
       const modulationInputs = this.paramMap.modulator.modulationInputs;
       const asr = {
-        attack: this.paramMap.attack.getValueForTime(message.time.timeStamp),
-        sustain: this.paramMap.sustain.getValueForTime(message.time.timeStamp),
-        release: this.paramMap.release.getValueForTime(message.time.timeStamp),
+        attack: this.paramMap.attack.getValueForTime(message.time),
+        sustain: this.paramMap.sustain.getValueForTime(message.time),
+        release: this.paramMap.release.getValueForTime(message.time),
       };
-      playSample(sampleName, message.time.timeStamp, 0, note, asr, outputs);
+      playSample(sampleName, message.time, 0, note, asr, outputs);
     });
   }
 }

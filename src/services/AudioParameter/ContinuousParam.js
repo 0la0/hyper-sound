@@ -55,7 +55,7 @@ export default class ContinuousParam {
       .setAddress(address)
       .setOnNext(message => {
         if (this.isConstant) { return; }
-        const time = audioGraph.getAudioTimeForTimestamp(message.time.timeStamp);
+        const time = audioGraph.getAudioTimeForTimestamp(message.time);
         const note = message.note;
         message.interpolate ?
           this.param.exponentialRampToValueAtTime(note, time):

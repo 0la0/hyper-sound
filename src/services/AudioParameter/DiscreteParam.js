@@ -64,7 +64,7 @@ export default class DiscreteParameter {
       .setAddress(address)
       .setOnNext(message => {
         const value = this.transform(message.note);
-        this.paramTable.addScheduledValue(message.time.timeStamp, value);
+        this.paramTable.addScheduledValue(message.time, value);
       });
     audioEventBus.subscribe(this.audioEventSubscription);
     this.isConstant = false;

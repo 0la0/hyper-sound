@@ -29,7 +29,6 @@ build: `npm run build`
 ```
 
 ## TODO:
-- Remove all instances of `message.time.audio`
 - Sound interpolation
 - Sound modulation
 - change `time.timestamp` to `time`
