@@ -29,9 +29,6 @@ build: `npm run build`
 ```
 
 ## TODO:
-- Sound interpolation
-- Sound modulation
-- change `time.timestamp` to `time`
 - GrainSampler component
 - Nested sequence option
 - sequences should emit real values (i.e. mtof(ps-pat-midi))

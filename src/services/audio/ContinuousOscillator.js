@@ -33,4 +33,8 @@ export default class ContinuousOsc {
   stop(time = 0) {
     this.gain.gain.setValueAtTime(0, time);
   }
+
+  setWaveform(type) {
+    applyTypeToOscillator(this.osc, type);
+  }
 }

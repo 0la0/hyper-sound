@@ -29,7 +29,7 @@ export default class HyperSoundOsc extends HyperSoundBase {
         element: this,
       }),
       wav: {
-        setValue: val => console.log('TODO: set waveform', val),
+        setValue: val => this.osc.setWaveform(val),
         disconnect: () => {},
       },
       modulator: new ContinuousParam({

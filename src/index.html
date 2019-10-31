@@ -48,7 +48,15 @@
 
       <h-dac>
         <h-gain value="0.5">
-          <h-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="a"></h-env-osc>
+          <h-env-osc
+            wav="sin"
+            attack="0"
+            sustain="0"
+            release="200"
+            trigger="a"
+            modulator="mod(testmod)"
+          >
+        </h-env-osc>
         </h-gain>
       </h-dac>
 
@@ -62,30 +70,33 @@
         <h-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></h-env-osc>
       </h-gain> -->
 
+      <h-gain value="100" id="testmod">
+        <!-- <h-env-osc wav="squ" attack="0" sustain="0" release="200" trigger="b"></h-env-osc> -->
+        <h-osc wav="sin" frequency="220"></h-osc>
+      </h-gain>
+
       <h-seq>
-        <!-- <h-arp step="2" distance="12" rate="1" repeat="1"> -->
-          <h-pat-mod speed="1">
-            <h-pat-midi pattern="a:52 a:60 , a:72"></h-pat-midi>
-            <h-pat-midi pattern="a a a"></h-pat-midi>
-          </h-pat-mod>
-        <!-- </h-arp> -->
+        <h-pat-mod speed="1">
+          <h-pat-midi pattern="a:52 a:60 , a:72"></h-pat-midi>
+          <h-pat-midi pattern="a a a"></h-pat-midi>
+        </h-pat-mod>
       </h-seq>
 
       <h-seq>
         <h-pat-mod speed="1">
-          <h-pat-midi address="b" pattern="_0.5 , _0.00001 , _0.5"></h-pat-midi>
+          <h-pat-midi address="b" pattern="20 , 32 , "></h-pat-midi>
         </h-pat-mod>
       </h-seq>
 
-      <h-seq>
+      <!-- <h-seq>
         <h-pat-mod speed="2">
           <h-pat-midi address="r" pattern="20 , 2000 ,"></h-pat-midi>
         </h-pat-mod>
-      </h-seq>
+      </h-seq> -->
 
       <!-- <h-dac>
         <h-gain value="0.3">
-          <h-osc wav="sin" frequency="addr(a)"></h-osc>
+          <h-osc wav="sin" frequency="332"></h-osc>
         </h-gain>
       </h-dac> -->
     </div>

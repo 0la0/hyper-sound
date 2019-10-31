@@ -5,6 +5,7 @@ export default class DiscreteModulationParam {
     this.attrName = attrName;
     this.element = element;
     this.modulationInputs = new Set();
+    setTimeout(() => this.setValue(element.getAttribute(attrName)));
   }
 
   _teardownPreviousConnections() {
@@ -17,12 +18,13 @@ export default class DiscreteModulationParam {
   }
 
   setValue(val) {
+    if (!val) {
+      return;
+    }
     const match = val.match(PARENTHESES);
-    this._teardownPreviousConnections();
     if (!match) {
       return;
     }
-    console.log(match[1], this.element.getRootNode().getElementById(match[1]))
     const target = this.element.getRootNode().getElementById(match[1]);
     if (!target || !target.audioModel) {
       return;
