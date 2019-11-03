@@ -66,6 +66,7 @@ export default class HyperSoundEnvOsc extends HyperSoundBase {
         element: this,
       }),
     };
+    this.patternEventInlet = message => this.schedule(message);
     batchRender(() => {
       if (this.parentNode.audioModel) {
         this.audioModel.connectTo(this.parentNode.audioModel);

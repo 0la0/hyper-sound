@@ -1,11 +1,8 @@
 import audioGraph from './Graph';
-import {mtof} from '../midi/util';
 import { AsrEnvelope } from './Envelope';
 import applyTypeToOscillator from './OscillatorUtil';
 
-// TODO: change midi note param to frequency
-export default function envelopedOscilator(midiNote, timestamp, asr, type, gain, outputs, modulator) {
-  const frequency = mtof(midiNote);
+export default function envelopedOscilator(frequency, timestamp, asr, type, gain, outputs, modulator) {
   const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);
   const endTime = startTime + asr.attack + asr.sustain + asr.release;
   const osc = audioGraph.getAudioContext().createOscillator();

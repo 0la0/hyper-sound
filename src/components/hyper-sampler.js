@@ -65,6 +65,7 @@ export default class HyperSoundSampler extends HyperSoundBase {
         element: this,
       }),
     };
+    this.patternEventInlet = message => this.schedule(message);
     batchRender(() => {
       if (this.parentNode.audioModel) {
         this.audioModel.connectTo(this.parentNode.audioModel);
@@ -74,16 +75,16 @@ export default class HyperSoundSampler extends HyperSoundBase {
 
   schedule(message) {
     setTimeout(() => {
-      const note = message.note !== undefined ? message.note : 60;
+      const { note, time } = message;
       const outputs = [...this.eventModel.getOutlets()];
-      const sampleName = this.paramMap.name.getValueForTime(message.time);
+      const sampleName = this.paramMap.name.getValueForTime(time);
       const modulationInputs = this.paramMap.modulator.modulationInputs;
       const asr = {
-        attack: this.paramMap.attack.getValueForTime(message.time),
-        sustain: this.paramMap.sustain.getValueForTime(message.time),
-        release: this.paramMap.release.getValueForTime(message.time),
+        attack: this.paramMap.attack.getValueForTime(time),
+        sustain: this.paramMap.sustain.getValueForTime(time),
+        release: this.paramMap.release.getValueForTime(time),
       };
-      playSample(sampleName, message.time, 0, note, asr, outputs);
+      playSample(sampleName, time, 0, note, asr, outputs);
     });
   }
 }

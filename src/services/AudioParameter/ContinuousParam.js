@@ -1,7 +1,6 @@
 import { Subscription } from 'sea';
 import audioGraph from '../audio/Graph';
 import { audioEventBus } from '../EventBus';
-import { mtof } from '../midi/util';
 
 const PARENTHESES = /\(([^)]+)\)/;
 

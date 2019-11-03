@@ -6,6 +6,7 @@ import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
 import StaticParam from '../services/AudioParameter/StaticParam';
+import frequencySetting from '../services/Frequency';
 
 export default class HyperSoundFilter extends HyperSoundBase {
   static get tag() {
@@ -33,7 +34,7 @@ export default class HyperSoundFilter extends HyperSoundBase {
         attrName: 'frequency',
         param: filter.getFrequencyParam(),
         inputType: new InputType().numeric().message().signal(),
-        defaultValue: 440,
+        defaultValue: frequencySetting.getBaseFrequency(),
         element: this,
       }),
       q: new ContinuousParam({

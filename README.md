@@ -30,5 +30,3 @@ build: `npm run build`
 
 ## TODO:
 - GrainSampler component
-- Nested sequence option
-- sequences should emit real values (i.e. mtof(ps-pat-midi))

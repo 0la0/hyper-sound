@@ -1,9 +1,10 @@
 import audioGraph from './Graph';
 import applyTypeToOscillator from './OscillatorUtil';
+import frequencySetting from '../Frequency';
 
 export default class ContinuousOsc {
   constructor(frequency, type) {
-    this.frequency = frequency || 440;
+    this.frequency = frequency || frequencySetting.getBaseFrequency();
     this.gain = audioGraph.getAudioContext().createGain();
     this.gain.gain.setValueAtTime(0, 0);
     this.osc = audioGraph.getAudioContext().createOscillator();

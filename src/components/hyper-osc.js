@@ -5,6 +5,7 @@ import ContinuousOscillator from '../services/audio/ContinuousOscillator';
 import { InputType, } from '../services/AudioParameter/InputType';
 import { batchRender, } from '../services/TaskScheduler';
 import ContinuousParam from '../services/AudioParameter/ContinuousParam';
+import frequencySetting from '../services/Frequency';
 
 export default class HyperSoundOsc extends HyperSoundBase {
   static get tag() {
@@ -18,14 +19,14 @@ export default class HyperSoundOsc extends HyperSoundBase {
   connectedCallback() {
     super.connectedCallback();
     const waveform = this.getAttribute('wav');
-    this.osc = new ContinuousOscillator(440, waveform);
+    this.osc = new ContinuousOscillator(frequencySetting.getBaseFrequency(), waveform);
     this.audioModel = new UgenConnection('CONTINUOUS_OSC', this.osc, UgenConnectinType.EMPTY, UgenConnectinType.SIGNAL);
     this.paramMap = {
       frequency: new ContinuousParam({
         attrName: 'frequency',
         param: this.osc.getFrequencyParam(),
         inputType: new InputType().numeric().message().signal(),
-        defaultValue: 440,
+        defaultValue: frequencySetting.getBaseFrequency(),
         element: this,
       }),
       wav: {
@@ -36,7 +37,7 @@ export default class HyperSoundOsc extends HyperSoundBase {
         attrName: 'modulator',
         param: this.osc.getFrequencyParam(),
         inputType: new InputType().signal(),
-        defaultValue: 440,
+        defaultValue: frequencySetting.getBaseFrequency(),
         element: this,
       }),
     };

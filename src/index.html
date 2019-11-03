@@ -56,15 +56,28 @@
             trigger="a"
             modulator="mod(testmod)"
           >
+          <h-seq>
+            <h-pat-mod speed="1" mtof>
+              <h-pat pattern="52 60 , 72"></h-pat>
+              <h-pat pattern="x  x x x"></h-pat>
+            </h-pat-mod>
+          </h-seq>
         </h-env-osc>
         </h-gain>
       </h-dac>
 
-      <!-- <h-dac>
+      <h-dac>
         <h-gain value="0.9">
-          <h-sampler name="snare" attack="0" sustain="0" release="200" trigger="a"></h-sampler>
+          <h-sampler name="snare" attack="0" sustain="0" release="200" trigger="a">
+            <h-seq>
+              <h-pat-mod speed="1" mtof>
+                <h-pat pattern=", x , x"></h-pat>
+                <h-pat pattern=", x , x"></h-pat>
+              </h-pat-mod>
+            </h-seq>
+          </h-sampler>
         </h-gain>
-      </h-dac> -->
+      </h-dac>
 
       <!-- <h-gain value="100" id="testmod">
         <h-env-osc wav="sin" attack="0" sustain="0" release="200" trigger="b"></h-env-osc>
@@ -75,22 +88,22 @@
         <h-osc wav="sin" frequency="220"></h-osc>
       </h-gain>
 
-      <h-seq>
-        <h-pat-mod speed="1">
-          <h-pat-midi pattern="a:52 a:60 , a:72"></h-pat-midi>
-          <h-pat-midi pattern="a a a"></h-pat-midi>
+      <!-- <h-seq>
+        <h-pat-mod speed="1" mtof>
+          <h-pat pattern="a:52 a:60 , a:72"></h-pat>
+          <h-pat pattern="a a a"></h-pat>
         </h-pat-mod>
-      </h-seq>
+      </h-seq> -->
 
-      <h-seq>
+      <!-- <h-seq>
         <h-pat-mod speed="1">
-          <h-pat-midi address="b" pattern="20 , 32 , "></h-pat-midi>
+          <h-pat address="b" pattern="72 , 60 , "></h-pat>
         </h-pat-mod>
-      </h-seq>
+      </h-seq> -->
 
       <!-- <h-seq>
         <h-pat-mod speed="2">
-          <h-pat-midi address="r" pattern="20 , 2000 ,"></h-pat-midi>
+          <h-pat address="r" pattern="20 , 2000 ,"></h-pat>
         </h-pat-mod>
       </h-seq> -->
 
