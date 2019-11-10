@@ -4,6 +4,7 @@ import HyperEnvOsc from './hyper-env-osc';
 import HyperFilter from './hyper-filter';
 import HyperGain from './hyper-gain';
 import HyperGate from './hyper-gate';
+import HyperInlet from './hyper-inlet';
 import HyperOsc from './hyper-osc';
 import HyperPan from './hyper-panner';
 import HyperReverb from './hyper-reverb';
@@ -18,6 +19,7 @@ export const components = {
   HyperFilter,
   HyperGain,
   HyperGate,
+  HyperInlet,
   HyperOsc,
   HyperPan,
   HyperReverb,

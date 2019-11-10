@@ -46,7 +46,7 @@ export default class ContinuousParam {
   _setMessage(val) {
     const match = val.match(PARENTHESES);
     if (!match) {
-      console.log(`error paring address ${val}`);
+      console.log(`error parsing address ${val}`);
       return this._setDefaultValue();
     }
     const address = match[1];
@@ -67,7 +67,7 @@ export default class ContinuousParam {
   _setSignal(val) {
     const match = val.match(PARENTHESES);
     if (!match) {
-      console.log(`error paring modulation value ${val}`);
+      console.log(`error parsing modulation value ${val}`);
       return this._setDefaultValue();
     }
     const target = this.element.getRootNode().getElementById(match[1]);
