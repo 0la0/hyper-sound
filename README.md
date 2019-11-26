@@ -29,10 +29,14 @@ build: `npm run build`
 ```
 
 ## TODO:
-- editor window status (running, pending, errror, etc)
+- example files!
 - midi
 - message components (message inlet, messge, map, etc)
 - GrainSampler component
 - params allow multiple values:
   - `trigger="a b"`
   - `mod="test1 test2"`
+- pattern length attribute
+- toScale component
+- documentation
+- afterimage viz-filter
