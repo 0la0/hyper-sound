@@ -3,6 +3,8 @@ Audio synthesis with HTML.
 
 Development ongoing, documentation to follow.
 
+[Examples](examples.md)
+
 ## Build scripts
 install dependencies: `npm install`  
 run tests: `npm test`  
@@ -11,25 +13,7 @@ build: `npm run build`
 
 ---
 
-## Usage example
-
-```html
-<ps-dac>
-  <ps-gain value="0.1">
-    <ps-env-osc wav="squ" attack="0" sustain="0" release="40" trigger="a"></ps-env-osc>
-  </ps-gain>
-</ps-dac>
-
-<ps-seq>
-  <ps-pat-mod speed="0.5" degrade="0.5">
-    <ps-pat-midi pattern="a:52 a:60 a:65 a:72"></ps-pat-midi>
-    <ps-pat-midi pattern="a a a"></ps-pat-midi>
-  </ps-pat-mod>
-</ps-seq>
-```
-
 ## TODO:
-- example files!
 - midi
 - message components (message inlet, messge, map, etc)
 - GrainSampler component
