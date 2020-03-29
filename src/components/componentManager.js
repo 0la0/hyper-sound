@@ -1,16 +1,16 @@
-import HyperCrush from './hyper-crush';
-import HyperDac from './hyper-dac';
-import HyperEnvOsc from './hyper-env-osc';
-import HyperFilter from './hyper-filter';
-import HyperGain from './hyper-gain';
-import HyperGate from './hyper-gate';
-import HyperInlet from './hyper-inlet';
-import HyperOsc from './hyper-osc';
-import HyperPan from './hyper-panner';
-import HyperReverb from './hyper-reverb';
-import HyperSampler from './hyper-sampler';
-import HyperTapeDelay from './hyper-tape-delay';
-import HyperWaveshaper from './hyper-waveshaper';
+import HyperCrush from './hyper-crush.js';
+import HyperDac from './hyper-dac.js';
+import HyperEnvOsc from './hyper-env-osc.js';
+import HyperFilter from './hyper-filter.js';
+import HyperGain from './hyper-gain.js';
+import HyperGate from './hyper-gate.js';
+import HyperInlet from './hyper-inlet.js';
+import HyperOsc from './hyper-osc.js';
+import HyperPan from './hyper-panner.js';
+import HyperReverb from './hyper-reverb.js';
+import HyperSampler from './hyper-sampler.js';
+import HyperTapeDelay from './hyper-tape-delay.js';
+import HyperWaveshaper from './hyper-waveshaper.js';
 
 export const components = {
   HyperCrush,

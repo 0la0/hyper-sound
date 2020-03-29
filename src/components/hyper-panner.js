@@ -1,10 +1,10 @@
-import HyperSoundBase from './hyper-base';
-import StereoPanner from '../services/audio/StereoPanner';
-import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/InputType';
-import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../services/AudioParameter/ContinuousParam';
+import HyperSoundBase from './hyper-base.js';
+import StereoPanner from '../services/audio/StereoPanner.js';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import { InputType, } from '../services/AudioParameter/InputType.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam.js';
 
 export default class HyperSoundGain extends HyperSoundBase {
   static get tag() {

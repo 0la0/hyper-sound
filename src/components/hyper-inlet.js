@@ -1,11 +1,11 @@
-import HyperSoundBase from './hyper-base';
-import Gain from '../services/audio/gain';
-import UgenConnectionType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/InputType';
-import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../services/AudioParameter/ContinuousParam';
-import ContinuousRoutingParam from '../services/AudioParameter/ContinuousRoutingParam';
+import HyperSoundBase from './hyper-base.js';
+import Gain from '../services/audio/gain.js';
+import UgenConnectionType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import { InputType, } from '../services/AudioParameter/InputType.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam.js';
+import ContinuousRoutingParam from '../services/AudioParameter/ContinuousRoutingParam.js';
 
 export default class HyperSoundInlet extends HyperSoundBase {
   static get tag() {

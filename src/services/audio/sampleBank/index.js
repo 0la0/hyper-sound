@@ -1,5 +1,5 @@
-import { decodeAudioData } from './SampleLoader';
-import { getDefaultSamples, getDefaultSampleNames } from './defaultSamples';
+import { decodeAudioData } from './SampleLoader.js';
+import { getDefaultSamples, getDefaultSampleNames } from './defaultSamples.js';
 
 class SampleBank {
   constructor() {

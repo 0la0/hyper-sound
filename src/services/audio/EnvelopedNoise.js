@@ -1,4 +1,4 @@
-import audioGraph from './Graph';
+import audioGraph from './Graph.js';
 
 export default function envelopedNoiseGenerator(timestamp, asr, gain, outputs) {
   const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);

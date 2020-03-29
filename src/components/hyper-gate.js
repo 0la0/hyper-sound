@@ -1,11 +1,11 @@
-import HyperSoundBase from './hyper-base';
-import Gain from '../services/audio/gain';
-import buildGateNode from '../services/audio/gate';
-import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/InputType';
-import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../services/AudioParameter/ContinuousParam';
+import HyperSoundBase from './hyper-base.js';
+import Gain from '../services/audio/gain.js';
+import buildGateNode from '../services/audio/gate.js';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import { InputType, } from '../services/AudioParameter/InputType.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam.js';
 
 export default class HyperSoundGate extends HyperSoundBase {
   static get tag() {

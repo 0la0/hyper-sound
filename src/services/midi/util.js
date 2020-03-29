@@ -1,4 +1,4 @@
-import frequencySetting from '../Frequency';
+import frequencySetting from '../Frequency.js';
 
 const midiA4 = 69;
 

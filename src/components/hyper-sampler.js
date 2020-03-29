@@ -1,13 +1,13 @@
-import HyperSoundBase from './hyper-base';
-import playSample from '../services/audio/Sampler';
-import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
-import { batchRender, } from '../services/TaskScheduler';
-import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam';
-import TriggerParameter from '../services/AudioParameter/TriggerParameter';
-import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
-import { msToSec } from '../services/Math';
+import HyperSoundBase from './hyper-base.js';
+import playSample from '../services/audio/Sampler.js';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam.js';
+import TriggerParameter from '../services/AudioParameter/TriggerParameter.js';
+import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam.js';
+import { msToSec } from '../services/Math.js';
 
 export default class HyperSoundSampler extends HyperSoundBase {
   static get tag() {

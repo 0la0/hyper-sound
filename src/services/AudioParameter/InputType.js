@@ -1,4 +1,4 @@
-import UgenConnectionType from '../UgenConnection/UgenConnection';
+import UgenConnectionType from '../UgenConnection/UgenConnection.js';
 
 const InputTypes = {
   NUMERIC: 'NUMERIC',

@@ -1,6 +1,6 @@
-import audioGraph from './Graph';
-import WetLevel from './WetLevel';
-import { getWorklet } from './WorkletUtil';
+import audioGraph from './Graph.js';
+import WetLevel from './WetLevel.js';
+import { getWorklet } from './WorkletUtil.js';
 
 class Bitcrusher  {
   constructor(bitrusher) {

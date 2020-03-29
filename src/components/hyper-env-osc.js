@@ -1,14 +1,14 @@
-import HyperSoundBase from './hyper-base';
-import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter';
-import envelopedOscilator from '../services/audio/EnvelopedOscillator';
-import envelopedNoise from '../services/audio/EnvelopedNoise';
-import { msToSec } from '../services/Math';
-import { batchRender, } from '../services/TaskScheduler';
-import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam';
-import TriggerParameter from '../services/AudioParameter/TriggerParameter';
-import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam';
+import HyperSoundBase from './hyper-base.js';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import AudioEventToModelAdapter from '../services/UgenConnection/AudioEventToModelAdapter.js';
+import envelopedOscilator from '../services/audio/EnvelopedOscillator.js';
+import envelopedNoise from '../services/audio/EnvelopedNoise.js';
+import { msToSec } from '../services/Math.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import DiscreteParameter, { InputType, } from '../services/AudioParameter/DiscreteParam.js';
+import TriggerParameter from '../services/AudioParameter/TriggerParameter.js';
+import DiscreteModulationParam from '../services/AudioParameter/DiscreteModulationParam.js';
 
 export default class HyperSoundEnvOsc extends HyperSoundBase {
   static get tag() {

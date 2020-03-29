@@ -1,4 +1,4 @@
-import audioGraph from '../Graph';
+import audioGraph from '../Graph.js';
 
 export function decodeAudioData(compressedBuffer) {
   try {

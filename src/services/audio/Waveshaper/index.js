@@ -4,9 +4,9 @@
  *  http://music.columbia.edu/cmc/MusicAndComputers/chapter4/04_06.php
  *  http://msp.ucsd.edu/techniques/v0.11/book-html/node78.html
  */
-import audioGraph from '../Graph';
-import WetLevel from '../WetLevel';
-import { getCarrierFunction, CARRIER_NAMES } from './carrierFunctions';
+import audioGraph from '../Graph.js';
+import WetLevel from '../WetLevel.js';
+import { getCarrierFunction, CARRIER_NAMES } from './carrierFunctions.js';
 
 function createCurve(carrierFunction, sampleRate, multiplier) {
   const curve = new Float32Array(sampleRate);

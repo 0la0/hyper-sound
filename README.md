@@ -24,3 +24,4 @@ build: `npm run build`
 - toScale component
 - documentation
 - afterimage viz-filter
+- MIDI config aliases for editor

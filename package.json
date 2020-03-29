@@ -1,27 +1,27 @@
 {
   "name": "hyper-sound",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Audio synthesis with HTML",
   "main": "dist/hypersound.js",
   "scripts": {
-    "build": "webpack -r esm --mode=development --content-base src",
+    "build": "webpack --config webpack.config.cjs --mode=production --content-base src",
     "lint": "eslint src test",
-    "start": "webpack-dev-server -r esm --mode=development --inline --colors --progress",
-    "test": "mocha -r esm test/*.test.js"
+    "start": "webpack-dev-server --config webpack.config.cjs --mode=development --inline --colors --progress",
+    "test": "mocha test/*.test.js"
   },
   "author": "Luke Anderson",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "sea": "github:0la0/sea#1.0.0"
+    "sea": "github:0la0/sea#v1.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.0",
-    "esm": "^3.2.25",
+    "eslint": "^7.0.0-alpha.2",
     "hyper-patterns": "../hyper-patterns",
-    "mocha": "^6.1.4",
-    "raw-loader": "^2.0.0",
-    "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "mocha": "^7.1.1",
+    "raw-loader": "^4.0.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

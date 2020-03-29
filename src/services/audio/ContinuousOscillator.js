@@ -1,6 +1,6 @@
-import audioGraph from './Graph';
-import applyTypeToOscillator from './OscillatorUtil';
-import frequencySetting from '../Frequency';
+import audioGraph from './Graph.js';
+import applyTypeToOscillator from './OscillatorUtil/index.js';
+import frequencySetting from '../Frequency.js';
 
 export default class ContinuousOsc {
   constructor(frequency, type) {

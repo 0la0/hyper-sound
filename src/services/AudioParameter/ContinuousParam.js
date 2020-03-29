@@ -1,6 +1,6 @@
 import { Subscription } from 'sea';
-import audioGraph from '../audio/Graph';
-import { audioEventBus } from '../EventBus';
+import audioGraph from '../audio/Graph.js';
+import { audioEventBus } from '../EventBus.js';
 
 const PARENTHESES = /\(([^)]+)\)/;
 

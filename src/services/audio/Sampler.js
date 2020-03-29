@@ -1,7 +1,7 @@
-import audioGraph from './Graph';
-import { AsrEnvelope } from './Envelope';
-import sampleBank from './sampleBank';
-import { ftom } from '../midi/util';
+import audioGraph from './Graph.js';
+import { AsrEnvelope } from './Envelope.js';
+import sampleBank from './sampleBank/index.js';
+import { ftom } from '../midi/util.js';
 
 const semitoneRatio = Math.pow(2, 1 / 12);
 

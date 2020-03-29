@@ -1,4 +1,4 @@
-import audioGraph from './Graph';
+import audioGraph from './Graph.js';
 
 class AsrEnvelope {
   constructor(attack, sustain, release) {

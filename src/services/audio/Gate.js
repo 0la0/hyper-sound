@@ -1,5 +1,5 @@
-import audioGraph from './Graph';
-import { getWorklet } from './WorkletUtil';
+import audioGraph from './Graph.js';
+import { getWorklet } from './WorkletUtil.js';
 
 class Gate  {
   constructor(gateNode) {

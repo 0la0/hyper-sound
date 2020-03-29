@@ -1,7 +1,6 @@
 import { Subscription } from 'sea';
-import { audioEventBus } from '../EventBus';
-import ParamTable from './ParamTable';
-import audioGraph from '../audio/Graph';
+import { audioEventBus } from '../EventBus.js';
+import ParamTable from './ParamTable.js';
 
 export const InputType = {
   number: 'number',

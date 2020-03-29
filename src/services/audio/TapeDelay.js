@@ -1,4 +1,4 @@
-import audioGraph from './Graph';
+import audioGraph from './Graph.js';
 
 export default class TapeDelay  {
   constructor(delayTime = 0, feedback = 0.2, wet = 0.5) {

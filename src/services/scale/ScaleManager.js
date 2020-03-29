@@ -1,4 +1,4 @@
-import scales from './scales';
+import scales from './scales.js';
 
 function getProgressiveScale(scale) {
   let sum = 0;

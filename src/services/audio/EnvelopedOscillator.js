@@ -1,6 +1,6 @@
-import audioGraph from './Graph';
-import { AsrEnvelope } from './Envelope';
-import applyTypeToOscillator from './OscillatorUtil';
+import audioGraph from './Graph.js';
+import { AsrEnvelope } from './Envelope.js';
+import applyTypeToOscillator from './OscillatorUtil/index.js';
 
 export default function envelopedOscilator(frequency, timestamp, asr, type, gain, outputs, modulator) {
   const startTime = audioGraph.getAudioTimeForTimestamp(timestamp);

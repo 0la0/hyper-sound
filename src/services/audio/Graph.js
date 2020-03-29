@@ -1,4 +1,4 @@
-import initAudioWorklets from './WorkletUtil';
+import initAudioWorklets from './WorkletUtil.js';
 
 class AudioGraph {
   constructor () {

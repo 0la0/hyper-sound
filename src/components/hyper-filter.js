@@ -1,12 +1,12 @@
-import HyperSoundBase from './hyper-base';
-import Filter from '../services/audio/Filter';
-import UgenConnectinType from '../services/UgenConnection/UgenConnectionType';
-import UgenConnection from '../services/UgenConnection/UgenConnection';
-import { InputType, } from '../services/AudioParameter/InputType';
-import { batchRender, } from '../services/TaskScheduler';
-import ContinuousParam from '../services/AudioParameter/ContinuousParam';
-import StaticParam from '../services/AudioParameter/StaticParam';
-import frequencySetting from '../services/Frequency';
+import HyperSoundBase from './hyper-base.js';
+import Filter from '../services/audio/Filter.js';
+import UgenConnectinType from '../services/UgenConnection/UgenConnectionType.js';
+import UgenConnection from '../services/UgenConnection/UgenConnection.js';
+import { InputType, } from '../services/AudioParameter/InputType.js';
+import { batchRender, } from '../services/TaskScheduler.js';
+import ContinuousParam from '../services/AudioParameter/ContinuousParam.js';
+import StaticParam from '../services/AudioParameter/StaticParam.js';
+import frequencySetting from '../services/Frequency.js';
 
 export default class HyperSoundFilter extends HyperSoundBase {
   static get tag() {

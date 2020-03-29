@@ -1,6 +1,6 @@
-import audioGraph from './Graph';
-import buildConvolutionBuffer from './convolutionBuilder';
-import WetLevel from './WetLevel';
+import audioGraph from './Graph.js';
+import buildConvolutionBuffer from './convolutionBuilder.js';
+import WetLevel from './WetLevel.js';
 
 export default class Reverb  {
   constructor (attack = 0.001, decay = 0.6) {

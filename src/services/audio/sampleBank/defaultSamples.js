@@ -1,5 +1,4 @@
-import { decodeAudioData } from './SampleLoader';
-import { base64ToArrayBuffer } from '../../Math';
+import { base64ToArrayBuffer } from '../../Math.js';
 import crash from '../../../assets/crash.b64mp3';
 import hatAccent from '../../../assets/hat_accent.b64mp3';
 import hatClosed from '../../../assets/hat_closed.b64mp3';

@@ -1,4 +1,4 @@
-import audioGraph from 'services/audio/Graph';
+import audioGraph from 'services/audio/Graph.js';
 
 export default class Visualizer {
   constructor () {

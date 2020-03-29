@@ -1,5 +1,5 @@
 import assert from 'assert';
-import ParamTable from '../src/services/AudioParameter/ParamTable';
+import ParamTable from '../src/services/AudioParameter/ParamTable.js';
 
 describe('ParamTable', () => {
   it('returns false on an empty table', () => {
