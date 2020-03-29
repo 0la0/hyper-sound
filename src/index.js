@@ -20,6 +20,6 @@ const PsMarkup = {
 
 (function() {
   document.addEventListener('DOMContentLoaded', init);
-})()
+})();
 
 export default PsMarkup;

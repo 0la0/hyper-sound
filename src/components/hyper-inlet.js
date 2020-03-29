@@ -38,7 +38,6 @@ export default class HyperSoundInlet extends HyperSoundBase {
     batchRender(() => {
       if (this.parentNode.audioModel) {
         this.audioModel.connectTo(this.parentNode.audioModel);
-        console.log('connected', this.audioModel)
       }
     });
   }

@@ -1,6 +1,6 @@
 {
   "name": "hyper-sound",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Audio synthesis with HTML",
   "main": "dist/hypersound.js",
   "scripts": {

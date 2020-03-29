@@ -105,7 +105,7 @@ export default class ContinuousParam {
     }
     if (this.inputType.isSignal && val.indexOf('mod') === 0) {
       return this._setSignal(val);
-     }
+    }
     if (this.inputType.isNumeric) {
       return this._setNumeric(val);
     }

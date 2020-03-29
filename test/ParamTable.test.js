@@ -37,7 +37,7 @@ describe('ParamTable', () => {
     assert.equal(param.writeIndex, 13);
     assert.equal(param.getValueForTime(14.7), 15);
     assert.equal(param.getValueForTime(3.3), 3);
-    param.addScheduledValue(19, `${19}`)
+    param.addScheduledValue(19, `${19}`);
     assert.equal(param.size, 16);
     assert.equal(param.writeIndex, 14);
     assert.equal(param.getValueForTime(3.3), 4);

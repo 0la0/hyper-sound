@@ -78,7 +78,7 @@ export default class HyperSoundSampler extends HyperSoundBase {
       const { note, time } = message;
       const outputs = [...this.eventModel.getOutlets()];
       const sampleName = this.paramMap.name.getValueForTime(time);
-      const modulationInputs = this.paramMap.modulator.modulationInputs;
+      // TODO: FM - const modulationInputs = this.paramMap.modulator.modulationInputs;
       const asr = {
         attack: this.paramMap.attack.getValueForTime(time),
         sustain: this.paramMap.sustain.getValueForTime(time),

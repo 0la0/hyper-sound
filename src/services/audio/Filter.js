@@ -18,7 +18,6 @@ export default class Filter {
   }
 
   connect(node) {
-    console.log('connectFilter', node)
     this.output.connect(node);
   }
 

@@ -22,7 +22,7 @@ function loadWorklet(audioContext, workletName) {
   return new Promise((resolve, reject) => {
     try {
       const workletNode = new AudioWorkletNode(audioContext, workletName);
-      console.log('WorketLoaded', workletNode)
+      console.log('WorketLoaded', workletNode);
       resolve(workletNode);
     } catch (error) {
       reject(error);

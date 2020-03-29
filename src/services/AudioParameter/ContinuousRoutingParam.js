@@ -4,7 +4,7 @@ export default class ContinuousRoutingParam {
     this.outletAudioModel = outletAudioModel;
     this.inputType = inputType;
     this.element = element;
-    this.elementMap = {}
+    this.elementMap = {};
     setTimeout(() => this.setValue(element.getAttribute(attrName)));
   }
 
