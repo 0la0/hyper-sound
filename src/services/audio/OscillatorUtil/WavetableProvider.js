@@ -1,5 +1,5 @@
-import PeriodicWave from './PeriodicWave';
-import wavetables from './Wavetables';
+import PeriodicWave from './PeriodicWave.js';
+import wavetables from './Wavetables.js';
 
 const periodicWaves = {};
 

@@ -16,11 +16,11 @@
     "sea": "github:0la0/sea#v1.1.0"
   },
   "devDependencies": {
-    "eslint": "^7.0.0-alpha.2",
+    "eslint": "^7.0.0-alpha.3",
     "hyper-patterns": "../hyper-patterns",
     "mocha": "^7.1.1",
-    "raw-loader": "^4.0.0",
-    "webpack": "^4.42.1",
+    "raw-loader": "^4.0.1",
+    "webpack": "4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   }

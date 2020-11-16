@@ -1,7 +1,7 @@
-import { components, defineComponents } from './components/componentManager';
-import sampleBank, { loadDefaultSamples } from './services/audio/sampleBank';
-import { previewSample } from './services/audio/Sampler';
-import frequencySetting from './services/Frequency';
+import { components, defineComponents } from './components/componentManager.js';
+import sampleBank, { loadDefaultSamples } from './services/audio/sampleBank/index.js';
+import { previewSample } from './services/audio/Sampler.js';
+import frequencySetting from './services/Frequency.js';
 
 function init() {
   defineComponents();

@@ -1,5 +1,5 @@
-import audioGraph from '../Graph';
-import { getPeriodicWave, } from './WavetableProvider';
+import audioGraph from '../Graph.js';
+import { getPeriodicWave, } from './WavetableProvider.js';
 
 const primitiveShorthands = {
   sin: 'sine',
