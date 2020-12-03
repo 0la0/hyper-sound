@@ -14,6 +14,8 @@ const PsMarkup = {
   removeSample: sampleBank.removeSample.bind(sampleBank),
   renameSample: sampleBank.renameSample.bind(sampleBank),
   getSampleNames: sampleBank.getNonDefaultSampleKeys.bind(sampleBank),
+  getDefaultSampleNames: sampleBank.getDefaultSampleKeys.bind(sampleBank),
+  getSampleArrayBuffer: sampleBank.getSampleArrayBuffer.bind(sampleBank),
   previewSample,
   setBaseFrequency: frequencySetting.setBaseFrequency.bind(frequencySetting)
 };

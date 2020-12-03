@@ -1,6 +1,21 @@
 import { decodeAudioData } from './SampleLoader.js';
 import { getDefaultSamples, getDefaultSampleNames } from './defaultSamples.js';
 
+class AudioBufferContainer {
+  constructor(arrayBuffer, audioBuffer) {
+    this.arrayBuffer = arrayBuffer;
+    this.audioBuffer = audioBuffer;
+  }
+
+  getArrayBuffer() {
+    return this.arrayBuffer;
+  }
+
+  getAudioBuffer() {
+    return this.audioBuffer;
+  }
+}
+
 class SampleBank {
   constructor() {
     this.samples = new Map();
@@ -16,8 +31,21 @@ class SampleBank {
       .filter(name => !defaultSampleKeys.includes(name));
   }
 
+  getDefaultSampleKeys() {
+    return getDefaultSampleNames();
+  }
+
   getAudioBuffer(sampleKey) {
-    return this.samples.get(sampleKey);
+    const audioBufferContainer = this.samples.get(sampleKey);
+    return audioBufferContainer && audioBufferContainer.getAudioBuffer();
+  }
+
+  getSampleArrayBuffer(sampleKey) {
+    const audioBufferContainer = this.samples.get(sampleKey);
+    if (!audioBufferContainer) {
+      throw new Error(`Sample: ${sampleKey} does not exist`);
+    }
+    return audioBufferContainer.getArrayBuffer();
   }
 
   addSample(name, arrayBuffer) {
@@ -27,8 +55,12 @@ class SampleBank {
     if (!(arrayBuffer instanceof ArrayBuffer)) {
       throw new TypeError(`SampleBank.addSample must be arrayBuffer, recieved ${arrayBuffer}`);
     }
+    const arrayBufferClone = arrayBuffer.slice(0);
     return decodeAudioData(arrayBuffer)
-      .then(audioBuffer => this.samples.set(name, audioBuffer))
+      .then(audioBuffer => {
+        const audioBufferContainer = new AudioBufferContainer(arrayBufferClone, audioBuffer); 
+        this.samples.set(name, audioBufferContainer);
+      })
       .catch(error => console.log(`Error loading sample ${name}`, error));
   }
 
@@ -46,9 +78,9 @@ class SampleBank {
     if (this.samples.has(newName)) {
       throw new Error(`SampleBank.renameSample, ${newName} already exists`);
     }
-    const audioBuffer = this.samples.get(oldName);
+    const audioBufferContainer = this.samples.get(oldName);
     this.samples.delete(oldName);
-    this.samples.set(newName, audioBuffer);
+    this.samples.set(newName, audioBufferContainer);
   }
 }
 
